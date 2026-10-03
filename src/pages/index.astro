@@ -1,0 +1,167 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, where, services } from '../data/site';
+import { problems } from '../data/problems';
+
+const faqs = [
+  {
+    q: 'Does hypnosis work?',
+    a: 'Hypnosis is a natural state of focused relaxation. It can help with habits, stress, sleep and confidence, and it works best when you genuinely want the change. On our free call I will tell you honestly whether I think it can help you.',
+  },
+  {
+    q: 'Do you work online or in person?',
+    a: 'Both. Online sessions over video work just as well for most people, so you can work with me from anywhere.',
+  },
+  {
+    q: 'How many sessions will I need?',
+    a: 'It depends on what you want to change. Quitting smoking can take one or two sessions; anxiety or sleep usually takes four to eight. We agree on a plan together.',
+  },
+  {
+    q: 'What happens on the free call?',
+    a: 'Twenty minutes to talk about what you want to change and which approach fits: hypnosis, breathwork, coaching or a retreat. No pressure to book.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base
+  title={`Hypnotherapy, Breathwork & Coaching ${where} | ${site.name}`}
+  description={`${site.name} offers hypnotherapy, breathwork, personal coaching and retreats ${where.toLowerCase()}. ${site.stats[0].value} lives transformed, ${site.stats[1].value} retreats hosted.`}
+  schema={[faqSchema]}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">{site.name}</div>
+          <h1>Hypnotherapy, Breathwork &amp; Coaching {where}</h1>
+          <p class="lead">
+            Change the patterns that hold you back. I combine hypnosis, breathwork and coaching to help
+            you with anxiety, sleep, habits and the bigger shifts in life.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href={site.bookingUrl}>Book a free call</a>
+            <a class="btn ghost" href="/retreats/">See retreats</a>
+          </div>
+        </div>
+        <div class="hero-art" role="img" aria-label="Decorative image">
+          <!-- TODO: replace with a photo of Oliver working with a client or at a retreat -->
+        </div>
+      </div>
+      <div class="stats">
+        {site.stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2>Ways to work with me</h2>
+      <div class="grid grid-4" style="margin-top:28px">
+        {
+          services.map((s) => (
+            <a class="card" href={s.href}>
+              <h3>{s.title}</h3>
+              <p>{s.blurb}</p>
+              <span class="go">Learn more →</span>
+            </a>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <h2>What would you like help with?</h2>
+      <p class="lead">Each of these has its own page explaining how I work with it.</p>
+      <div class="chips" style="margin-top:20px">
+        {problems.map((p) => <a class="chip" href={`/${p.slug}/`}>{p.label}</a>)}
+        <a class="chip more" href="/help/">See all →</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2>How it works</h2>
+      <div class="grid grid-3" style="margin-top:28px">
+        <div class="card">
+          <div class="num">1</div>
+          <h3>Free 20-minute call</h3>
+          <p>We talk about what you want to change and which approach fits.</p>
+        </div>
+        <div class="card">
+          <div class="num">2</div>
+          <h3>Your sessions</h3>
+          <p>Hypnosis, breathwork or coaching, in person or online.</p>
+        </div>
+        <div class="card">
+          <div class="num">3</div>
+          <h3>Keep it going</h3>
+          <p>Recordings, daily practices, or a retreat to go deeper.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <div class="placeholder">Retreat photo</div>
+      <div>
+        <div class="eyebrow">Retreats</div>
+        <h2>Go deeper on a retreat</h2>
+        <p class="lead">
+          Over {site.stats[1].value} retreats hosted. Several days away from everyday life, combining
+          breathwork, hypnosis and coaching in a small group.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href="/retreats/">Upcoming retreats</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split">
+      <div class="placeholder">Portrait of Oliver</div>
+      <div>
+        <h2>Hi, I'm Oliver</h2>
+        <p class="lead">
+          I have helped more than a thousand people change how they feel, sleep and live, through
+          one-to-one sessions and retreats. My work brings together hypnosis, breathwork and coaching,
+          because the mind and the body change best together.
+        </p>
+        <a href="/about/"><strong>My story →</strong></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow faq">
+      <h2>Questions</h2>
+      {
+        faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))
+      }
+      <div class="cta-box">
+        <h2>Ready to start?</h2>
+        <p>Book a free 20-minute call and we will find the right approach for you.</p>
+        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+      </div>
+    </div>
+  </section>
+</Base>

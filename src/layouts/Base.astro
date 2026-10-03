@@ -1,0 +1,128 @@
+---
+import '../styles/global.css';
+import { site } from '../data/site';
+import { problems } from '../data/problems';
+
+interface Props {
+  title: string;
+  description: string;
+  schema?: object[];
+}
+
+const { title, description, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, site.url).href;
+
+const localBusiness = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  description: `${site.tagline} with ${site.name}.`,
+  areaServed: site.city || 'Online',
+};
+const allSchema = [localBusiness, ...schema];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content={site.name} />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=Figtree:wght@400;500;600&display=swap"
+    />
+    {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="wrap nav" aria-label="Main">
+        <a class="logo" href="/">{site.name}</a>
+        <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="/coaching/">Coaching</a></li>
+          <li><a href="/breathwork/">Breathwork</a></li>
+          <li><a href="/hypnotherapy/">Hypnosis</a></li>
+          <li><a href="/retreats/">Retreats</a></li>
+          <li>
+            <details class="dropdown">
+              <summary>What I help with</summary>
+              <ul>
+                {problems.map((p) => <li><a href={`/${p.slug}/`}>{p.label}</a></li>)}
+                <li><a href="/help/"><strong>See all →</strong></a></li>
+              </ul>
+            </details>
+          </li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <div class="wrap">
+        <div class="foot-grid">
+          <div>
+            <h3>Services</h3>
+            <ul>
+              <li><a href="/coaching/">Coaching</a></li>
+              <li><a href="/breathwork/">Breathwork</a></li>
+              <li><a href="/hypnotherapy/">Hypnosis</a></li>
+              <li><a href="/retreats/">Retreats</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>I help with</h3>
+            <ul>
+              {problems.map((p) => <li><a href={`/${p.slug}/`}>{p.label}</a></li>)}
+              <li><a href="/help/">All problems →</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>About</h3>
+            <ul>
+              <li><a href="/about/">About Oliver</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3>Contact</h3>
+            <ul>
+              {site.city && <li>{site.city}</li>}
+              <li><a href={`mailto:${site.email}`}>{site.email}</a></li>
+              <li><a href={site.bookingUrl}>Book a free call</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="foot-bottom">
+          © {new Date().getFullYear()} {site.name}. Hypnotherapy and breathwork support wellbeing and
+          work alongside, not instead of, medical care.
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('nav-links');
+      toggle?.addEventListener('click', () => {
+        const open = links?.classList.toggle('open');
+        toggle.setAttribute('aria-expanded', String(!!open));
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,31 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+import { problems } from '../data/problems';
+---
+
+<Base
+  title={`What I Help With | ${site.name}`}
+  description={`Problems ${site.name} helps with through hypnosis, breathwork and coaching: ${problems.map((p) => p.label.toLowerCase()).join(', ')} and more.`}
+>
+  <section class="section">
+    <div class="wrap">
+      <h1>What I help with</h1>
+      <p class="lead">Each page explains how hypnosis and breathwork can help with that specific problem.</p>
+      <div class="grid grid-3" style="margin-top:28px">
+        {
+          problems.map((p) => (
+            <a class="card" href={`/${p.slug}/`}>
+              <h3>{p.h1}</h3>
+              <p>{p.description.split(':')[1]?.trim() ?? p.description}</p>
+              <span class="go">Read more →</span>
+            </a>
+          ))
+        }
+      </div>
+      <p class="muted" style="margin-top:28px">
+        Don't see your issue here? <a href={site.bookingUrl}>Book a free call</a> and ask.
+      </p>
+    </div>
+  </section>
+</Base>

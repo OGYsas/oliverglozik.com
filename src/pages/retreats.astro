@@ -1,0 +1,36 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title={`Breathwork & Hypnosis Retreats | ${site.name}`}
+  description={`Retreats with ${site.name}: several days of breathwork, hypnosis and coaching in a small group. ${site.stats[1].value} retreats hosted.`}
+>
+  <section class="section">
+    <div class="wrap narrow article">
+      <div class="eyebrow">Retreats</div>
+      <h1>Breathwork &amp; Hypnosis Retreats</h1>
+      <p class="lead">
+        Over {site.stats[1].value} retreats hosted. A few days away from everyday life to reset,
+        combining breathwork, hypnosis and coaching in a small, supportive group.
+      </p>
+
+      <h2>Upcoming retreats</h2>
+      <!-- TODO: add upcoming retreats (name, dates, location, places left, booking link) -->
+      <p>
+        New dates are announced soon. Get in touch and I will let you know as soon as the next retreat
+        opens.
+      </p>
+      <div class="btn-row"><a class="btn" href={site.bookingUrl}>Ask about the next retreat</a></div>
+
+      <h2>What a retreat includes</h2>
+      <ul>
+        <li>Daily breathwork sessions, from gentle to deep.</li>
+        <li>Group hypnosis and guided practices.</li>
+        <li>Coaching circles and time for one-to-one conversations.</li>
+        <li>Time in nature, good food and space to rest.</li>
+      </ul>
+    </div>
+  </section>
+</Base>

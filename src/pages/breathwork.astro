@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, where } from '../data/site';
+---
+
+<Base
+  title={`Breathwork Sessions ${where} | ${site.name}`}
+  description={`Somatic and conscious connected breathwork sessions with ${site.name} ${where.toLowerCase()}, one-to-one, in groups and on retreats.`}
+>
+  <section class="section">
+    <div class="wrap narrow article">
+      <div class="eyebrow">Breathwork</div>
+      <h1>Breathwork Sessions {where}</h1>
+      <p class="lead">
+        Breathwork uses deliberate breathing patterns to calm the nervous system, release stored tension
+        and reconnect you with your body. It is one of the most direct ways to change how you feel.
+      </p>
+      <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
+
+      <h2>Somatic breathwork</h2>
+      <p>
+        Somatic breathwork focuses on sensation in the body. We use the breath to notice where you hold
+        stress and tension and to let it move, often with a strong sense of release afterwards.
+      </p>
+
+      <h2>Conscious connected breathwork</h2>
+      <p>
+        A continuous breathing rhythm without pauses, held over a longer session. It can bring up and
+        clear emotions that are hard to reach by talking.
+      </p>
+
+      <h2>One-to-one, groups and retreats</h2>
+      <p>
+        I offer private sessions online or in person, group sessions, and breathwork as a core part of
+        every <a href="/retreats/">retreat</a>. Breathwork also runs through my
+        <a href="/hypnotherapy/">hypnotherapy</a> work, where it helps the changes settle in the body.
+      </p>
+
+      <p class="note">
+        Breathwork is not suitable for everyone. If you are pregnant, have epilepsy, a heart condition,
+        high blood pressure or a history of psychosis, please tell me on our call before booking.
+      </p>
+
+      <div class="cta-box">
+        <h2>Try a session</h2>
+        <p>Start with a free call to find the right format for you.</p>
+        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+      </div>
+    </div>
+  </section>
+</Base>

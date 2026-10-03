@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro';
+import { site, where } from '../data/site';
+import { problems, bySlug, type Problem } from '../data/problems';
+
+export function getStaticPaths() {
+  return problems.map((p) => ({ params: { slug: p.slug }, props: { p } }));
+}
+
+const { p } = Astro.props as { p: Problem };
+const label = p.label.toLowerCase();
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: p.faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+---
+
+<Base title={`${p.h1} | ${p.twin} ${where}`} description={p.description} schema={[faqSchema]}>
+  <article class="section">
+    <div class="wrap narrow article">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a> / <a href="/hypnotherapy/">Hypnosis</a> / {p.label}
+      </nav>
+      <h1>{p.h1}</h1>
+      <p class="lead">{p.intro}</p>
+      <div class="btn-row">
+        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+      </div>
+
+      {
+        p.medicalNote && (
+          <p class="note">
+            Hypnotherapy works alongside medical and psychological care, not instead of it. If you are
+            in crisis, please contact your doctor or local emergency services.
+          </p>
+        )
+      }
+
+      <h2>How {p.twin.toLowerCase()} helps</h2>
+      {p.how.map((t) => <p>{t}</p>)}
+
+      <h2>What a session looks like</h2>
+      <ul>{p.session.map((t) => <li>{t}</li>)}</ul>
+
+      <h2>How many sessions?</h2>
+      <p>{p.sessions}</p>
+
+      <h2>Where breathwork fits</h2>
+      <p>{p.breathwork}</p>
+
+      <div class="faq">
+        <h2>Questions about hypnosis for {label}</h2>
+        {
+          p.faqs.map((f) => (
+            <details>
+              <summary>{f.q}</summary>
+              <p>{f.a}</p>
+            </details>
+          ))
+        }
+      </div>
+
+      <div class="cta-box">
+        <h2>Start with a free call</h2>
+        <p>
+          {`Twenty minutes to talk about your ${label} and whether hypnosis is right for you. Sessions ${
+            site.city ? `in ${site.city} or online` : 'online or in person'
+          }.`}
+        </p>
+        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+      </div>
+
+      <h2>Related</h2>
+      <div class="chips">
+        {
+          p.related
+            .filter((s) => bySlug[s])
+            .map((s) => <a class="chip" href={`/${s}/`}>{bySlug[s].h1}</a>)
+        }
+        <a class="chip" href="/hypnotherapy/">All about hypnotherapy</a>
+      </div>
+    </div>
+  </article>
+</Base>

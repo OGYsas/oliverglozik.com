@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+---
+
+<Base
+  title={`Book a Free Call | ${site.name}`}
+  description={`Book a free 20-minute call with ${site.name} about hypnotherapy, breathwork, coaching or retreats.`}
+>
+  <section class="section">
+    <div class="wrap narrow article">
+      <h1>Book a free call</h1>
+      <p class="lead">
+        Twenty minutes to talk about what you want to change and which approach fits. No pressure to
+        book anything.
+      </p>
+      <!-- TODO: embed a booking calendar (Calendly, Cal.com, etc.) here -->
+      <div class="card" style="margin-top:24px">
+        <h3>Email me</h3>
+        <p>Tell me a little about what you'd like help with and when suits you.</p>
+        <a class="btn" style="align-self:flex-start" href={`mailto:${site.email}?subject=Free%20call`}>{site.email}</a>
+      </div>
+    </div>
+  </section>
+</Base>
