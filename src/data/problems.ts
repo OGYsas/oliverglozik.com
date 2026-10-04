@@ -1,12 +1,10 @@
 // One entry = one compact keyword page at /<slug>/.
-// The exact keyword goes in the URL, H1 and first sentence; its "hypnotherapy for X"
-// twin goes in the title and one H2 (see keywords/compact-keywords.md).
+// The exact keyword goes in the URL, title, H1 and first sentence.
 
 export interface Problem {
   slug: string;
   label: string; // short name for menus and chips
   h1: string;
-  twin: string; // the merged twin phrase, used in title + one H2
   description: string;
   intro: string;
   how: string[];
@@ -23,7 +21,6 @@ export const problems: Problem[] = [
     slug: 'hypnosis-for-weight-loss',
     label: 'Weight loss',
     h1: 'Hypnosis for Weight Loss',
-    twin: 'Hypnotherapy for Weight Loss',
     description:
       'Hypnosis for weight loss with Oliver Glozik: change the habits, cravings and emotional eating behind your weight, online or in person.',
     intro:
@@ -47,10 +44,6 @@ export const problems: Problem[] = [
         a: 'Hypnosis can help change the habits and emotional patterns that drive overeating. It works best combined with sensible eating and movement, not as a replacement for them. Results vary from person to person.',
       },
       {
-        q: 'Is hypnotherapy for weight loss the same as hypnosis for weight loss?',
-        a: 'Yes. Hypnotherapy is simply hypnosis used for a therapeutic goal, so the two terms describe the same work.',
-      },
-      {
         q: 'Can I do hypnosis for weight loss online?',
         a: 'Yes. Online sessions work just as well as in-person ones for most people. All you need is a quiet room and headphones.',
       },
@@ -59,13 +52,12 @@ export const problems: Problem[] = [
         a: 'No. You stay aware throughout and can open your eyes at any time. Hypnosis feels like deep relaxation with a focused mind.',
       },
     ],
-    related: ['hypnotherapy-for-anxiety', 'hypnosis-to-quit-smoking'],
+    related: ['hypnosis-for-anxiety', 'hypnosis-to-quit-smoking'],
   },
   {
     slug: 'hypnosis-to-quit-smoking',
     label: 'Quit smoking',
     h1: 'Hypnosis to Quit Smoking',
-    twin: 'Hypnotherapy for Smoking',
     description:
       'Hypnosis to quit smoking with Oliver Glozik: break the habit and the cravings for cigarettes or vaping, online or in person.',
     intro:
@@ -101,17 +93,16 @@ export const problems: Problem[] = [
         a: 'We address this directly in the session, so you do not swap cigarettes for snacks.',
       },
     ],
-    related: ['hypnosis-for-weight-loss', 'hypnotherapy-for-anxiety'],
+    related: ['hypnosis-for-weight-loss', 'hypnosis-for-anxiety'],
   },
   {
-    slug: 'hypnotherapy-for-anxiety',
+    slug: 'hypnosis-for-anxiety',
     label: 'Anxiety',
-    h1: 'Hypnotherapy for Anxiety',
-    twin: 'Hypnosis for Anxiety',
+    h1: 'Hypnosis for Anxiety',
     description:
-      'Hypnotherapy for anxiety with Oliver Glozik: calm an overactive nervous system with hypnosis and breathwork, online or in person.',
+      'Hypnosis for anxiety with Oliver Glozik: calm an overactive nervous system with hypnosis and breathwork, online or in person.',
     intro:
-      'Hypnotherapy for anxiety is for people who live with constant worry, a racing mind or a body that never quite switches off. Using hypnosis and breathwork together, we calm the nervous system and change the patterns that keep anxiety going, so you feel more settled day to day.',
+      'Hypnosis for anxiety is for people who live with constant worry, a racing mind or a body that never quite switches off. Using hypnosis and breathwork together, we calm the nervous system and change the patterns that keep anxiety going, so you feel more settled day to day.',
     how: [
       'Anxiety is your body’s alarm system working too hard. Thinking your way out of it rarely helps, because the alarm runs below conscious thought. Hypnosis reaches that level directly.',
       'In sessions you learn what calm actually feels like in your body, and we rehearse the situations that usually set off your anxiety so they start to feel manageable. You also learn self-hypnosis, so you have a tool you can use on your own.',
@@ -128,14 +119,10 @@ export const problems: Problem[] = [
     faqs: [
       {
         q: 'Is hypnosis for anxiety safe?',
-        a: 'Yes. Hypnosis is a natural, relaxed state and you stay in control throughout. If you are under medical care for anxiety, hypnotherapy works alongside it, not instead of it.',
+        a: 'Yes. Hypnosis is a natural, relaxed state and you stay in control throughout. If you are under medical care for anxiety, hypnosis works alongside it, not instead of it.',
       },
       {
-        q: 'What is the difference between hypnosis for anxiety and hypnotherapy for anxiety?',
-        a: 'There is none in practice. Hypnotherapy is the therapeutic use of hypnosis.',
-      },
-      {
-        q: 'Can hypnotherapy help with social anxiety?',
+        q: 'Can hypnosis help with social anxiety?',
         a: 'It can. We rehearse social situations in hypnosis so they feel less threatening in real life.',
       },
       {
@@ -150,7 +137,6 @@ export const problems: Problem[] = [
     slug: 'hypnosis-for-insomnia',
     label: 'Insomnia',
     h1: 'Hypnosis for Insomnia',
-    twin: 'Hypnotherapy for Insomnia',
     description:
       'Hypnosis for insomnia with Oliver Glozik: quiet a racing mind and fall asleep more easily, with hypnosis and breathwork for sleep.',
     intro:
@@ -178,15 +164,11 @@ export const problems: Problem[] = [
         a: 'It usually means a recording you listen to in bed. Your sessions include one made for you, which tends to work better than a generic track.',
       },
       {
-        q: 'Is hypnotherapy for insomnia different from hypnosis for insomnia?',
-        a: 'No. Both describe the same approach.',
-      },
-      {
         q: 'Should I still see my doctor about insomnia?',
-        a: 'Yes, especially if it is long-standing. Hypnotherapy works alongside medical care.',
+        a: 'Yes, especially if it is long-standing. Hypnosis works alongside medical care.',
       },
     ],
-    related: ['hypnotherapy-for-anxiety', 'hypnosis-for-weight-loss'],
+    related: ['hypnosis-for-anxiety', 'hypnosis-for-weight-loss'],
   },
 ];
 

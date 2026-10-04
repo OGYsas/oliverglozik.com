@@ -2,7 +2,7 @@
 export const site = {
   name: 'Oliver Glozik',
   url: 'https://oliverglozik.com',
-  tagline: 'Hypnotherapy, Breathwork & Coaching',
+  tagline: 'Hypnosis, Breathwork & Coaching',
   // TODO: replace with Oliver's city once known. Keep it short ("Lisbon", "Austin, TX").
   city: '',
   email: 'hello@oliverglozik.com',
@@ -29,9 +29,9 @@ export const services = [
     blurb: 'Somatic and conscious connected sessions.',
   },
   {
-    href: '/hypnotherapy/',
+    href: '/hypnosis/',
     title: 'Hypnosis',
-    blurb: 'Hypnotherapy in person or online.',
+    blurb: 'Hypnosis in person or online.',
   },
   {
     href: '/retreats/',

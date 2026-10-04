@@ -21,11 +21,11 @@ const faqSchema = {
 };
 ---
 
-<Base title={`${p.h1} | ${p.twin} ${where}`} description={p.description} schema={[faqSchema]}>
+<Base title={`${p.h1} ${where} | ${site.name}`} description={p.description} schema={[faqSchema]}>
   <article class="section">
     <div class="wrap narrow article">
       <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a> / <a href="/hypnotherapy/">Hypnosis</a> / {p.label}
+        <a href="/">Home</a> / <a href="/hypnosis/">Hypnosis</a> / {p.label}
       </nav>
       <h1>{p.h1}</h1>
       <p class="lead">{p.intro}</p>
@@ -36,13 +36,13 @@ const faqSchema = {
       {
         p.medicalNote && (
           <p class="note">
-            Hypnotherapy works alongside medical and psychological care, not instead of it. If you are
+            Hypnosis works alongside medical and psychological care, not instead of it. If you are
             in crisis, please contact your doctor or local emergency services.
           </p>
         )
       }
 
-      <h2>How {p.twin.toLowerCase()} helps</h2>
+      <h2>How hypnosis helps</h2>
       {p.how.map((t) => <p>{t}</p>)}
 
       <h2>What a session looks like</h2>
@@ -83,7 +83,7 @@ const faqSchema = {
             .filter((s) => bySlug[s])
             .map((s) => <a class="chip" href={`/${s}/`}>{bySlug[s].h1}</a>)
         }
-        <a class="chip" href="/hypnotherapy/">All about hypnotherapy</a>
+        <a class="chip" href="/hypnosis/">All about hypnosis</a>
       </div>
     </div>
   </article>
