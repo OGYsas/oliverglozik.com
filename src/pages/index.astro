@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site, where, services } from '../data/site';
 import { problems } from '../data/problems';
+import { reviews } from '../data/reviews';
 
 const faqs = [
   {
@@ -114,7 +115,26 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <div class="eyebrow">Reviews</div>
+      <h2>What people say</h2>
+      <p class="lead">Five-star reviews from people who have worked with me, at retreats and in sessions.</p>
+      <div class="reviews">
+        {
+          reviews.map((r) => (
+            <figure class="review">
+              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+              <blockquote>{r.text}</blockquote>
+              <figcaption>{r.name}</figcaption>
+            </figure>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
     <div class="wrap split">
       <div class="placeholder">Retreat photo</div>
       <div>
@@ -131,7 +151,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section">
     <div class="wrap split">
       <div class="placeholder">Portrait of Oliver</div>
       <div>
@@ -146,7 +166,7 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section alt">
     <div class="wrap narrow faq">
       <h2>Questions</h2>
       {

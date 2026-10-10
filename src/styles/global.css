@@ -198,3 +198,15 @@ a.card:hover { border-color: var(--accent); }
 
 .breadcrumb { font-size: 0.9rem; color: var(--muted); margin-bottom: 1.2em; }
 .breadcrumb a { color: var(--muted); }
+.section.alt .faq details { background: var(--bg); }
+
+/* Reviews */
+.reviews { columns: 3 300px; column-gap: 18px; margin-top: 28px; }
+.review {
+  break-inside: avoid; margin: 0 0 18px; background: var(--paper);
+  border: 1px solid var(--line); border-radius: var(--radius); padding: 22px 24px;
+}
+.review .stars { color: #e3a72f; letter-spacing: 2px; font-size: 1.05rem; margin-bottom: 8px; }
+.review blockquote { margin: 0 0 14px; color: var(--ink); }
+.review figcaption { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
+.review figcaption::before { content: '— '; }
