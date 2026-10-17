@@ -2,53 +2,285 @@
 import Base from '../layouts/Base.astro';
 import { site, where } from '../data/site';
 import { problems } from '../data/problems';
+
+// TODO: replace `book` with the $247 checkout or booking link once it exists.
+const session = {
+  price: '$247',
+  book: site.bookingUrl,
+};
+
+const familiar = [
+  {
+    title: 'The same situation, again',
+    text: 'A different job, a different partner, a different city, and somehow you end up in the same place you swore you’d left behind.',
+  },
+  {
+    title: 'You know better',
+    text: 'You can explain exactly why you do it. You’ve read the books, maybe done the therapy. And you still do it.',
+  },
+  {
+    title: 'Willpower runs out',
+    text: 'You start strong on Monday. By Thursday the old habit is back, as if part of you never agreed to the change.',
+  },
+  {
+    title: 'Reacting like a younger you',
+    text: 'Something small happens and you feel it far bigger than it is. Afterwards you wonder where that came from.',
+  },
+  {
+    title: 'A ceiling you keep hitting',
+    text: 'Money, love, confidence. You get close to more, then something in you pulls back to what feels familiar.',
+  },
+  {
+    title: 'A story about who you are',
+    text: '“I’m not good enough.” “People always leave.” “I can’t relax.” It doesn’t feel like a belief. It feels like a fact.',
+  },
+];
+
+const steps = [
+  { title: 'Before: a short form', text: 'You tell me what you want to change, so I know what to expect and we don’t waste time in the session.' },
+  { title: 'We talk', text: 'We get clear on the pattern, when it shows up and what it costs you.' },
+  { title: 'Hypnosis', text: 'I guide you into a relaxed, focused state where we go to the memories and beliefs underneath the pattern.' },
+  { title: 'A new script', text: 'We reframe what you find and put in the new script you want to live by.' },
+  { title: 'Take it home', text: 'You get a recording to listen to, so the new script keeps settling in after we finish.' },
+];
+
+const faqs = [
+  {
+    q: 'What does hypnosis feel like?',
+    a: 'Most people describe it as deep relaxation with a clear, focused mind. You stay aware and in control the whole time, and you can open your eyes whenever you want. Nothing about it is like stage hypnosis.',
+  },
+  {
+    q: 'Can I be hypnotised?',
+    a: 'If you can daydream, lose yourself in a film or drive somewhere without remembering the road, you already go into this state every day. Hypnosis is that same state, used on purpose. You don’t need to do anything special, just be willing to follow my voice.',
+  },
+  {
+    q: 'Will I lose control or say things I don’t want to?',
+    a: 'No. You hear everything, you remember the session and you can stop whenever you want. Nobody can make you do or say anything in hypnosis that you wouldn’t do otherwise.',
+  },
+  {
+    q: 'Does online hypnosis work as well as in person?',
+    a: 'For most people, yes, and most of my sessions are online. All you need is a quiet room where you won’t be disturbed, a stable connection and a pair of headphones.',
+  },
+  {
+    q: 'How long is a session and what does it cost?',
+    a: `A session is ${session.price} and lasts between an hour and an hour and a half, depending on what comes up for you. The price is the same online and in person.`,
+  },
+  {
+    q: 'How do I prepare?',
+    a: 'Fill in the form I send you before the session. On the day, find a quiet room, wear something comfortable, have headphones ready and give yourself a little time afterwards instead of rushing straight into your next meeting.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. I’m not a therapist, and hypnosis is not a replacement for medical or psychological care. If you’re in therapy it can be a good complement. Tell your therapist you’re doing it.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Base
   title={`Hypnosis ${where} | ${site.name}`}
-  description={`Hypnosis sessions with ${site.name} ${where.toLowerCase()}. Hypnosis combined with breathwork for anxiety, sleep, smoking, weight loss and more.`}
+  description={`Hypnosis ${where.toLowerCase()} with ${site.name}. Rewrite the subconscious script behind the patterns you keep repeating. One-to-one sessions for ${session.price}, 60 to 90 minutes.`}
+  schema={[faqSchema]}
 >
   <section class="section">
-    <div class="wrap narrow article">
-      <div class="eyebrow">Hypnosis</div>
-      <h1>Hypnosis {where}</h1>
-      <p class="lead">
-        Hypnosis uses a relaxed, focused state of mind to change habits, feelings and patterns that
-        are hard to shift by willpower alone. I combine it with breathwork, so the change happens in the
-        body as well as the mind.
-      </p>
-      <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
-
-      <h2>What hypnosis feels like</h2>
-      <p>
-        Most people describe it as deep relaxation with a clear, focused mind. You stay aware and in
-        control the whole time, and you can open your eyes whenever you want. Nothing about it is like
-        stage hypnosis.
-      </p>
-
-      <h2>What I help with</h2>
-      <div class="grid grid-2" style="margin-top:16px">
-        {
-          problems.map((p) => (
-            <a class="card" href={`/${p.slug}/`}>
-              <h3>{p.h1}</h3>
-              <span class="go">Read more →</span>
-            </a>
-          ))
-        }
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Hypnosis {where}</div>
+          <h1>Hypnosis to rewrite the script you’ve been living by</h1>
+          <p class="lead">
+            Your results in life come from a program running in your subconscious mind. Hypnosis lets
+            us go past the logical mind, find where that program came from and write a new one.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href={session.book}>Book a session for {session.price}</a>
+            <a class="btn ghost" href="#session">How a session works</a>
+          </div>
+        </div>
+        <img
+          class="photo portrait"
+          src="/images/oliver-portrait.jpg"
+          alt="Oliver Glozik, hypnosis practitioner"
+          width="740"
+          height="928"
+          fetchpriority="high"
+        />
       </div>
-      <p style="margin-top:1em"><a href="/help/">See everything I help with →</a></p>
+    </div>
+  </section>
 
-      <h2>Online or in person</h2>
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Sound familiar?</div>
+      <h2>You keep arriving at the same place</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {familiar.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow article">
+      <div class="eyebrow">Why it keeps happening</div>
+      <h2 style="margin-top:0">You’re running on outdated software</h2>
       <p>
-        Online sessions over video work just as well for most people. All you need is a quiet room and a
-        pair of headphones. Every session comes with a recording to use at home.
+        Most of what you do every day isn’t a decision. It’s a program. Your subconscious mind wrote it
+        a long time ago, out of past experiences, out of trauma, out of the way you made sense of life
+        as a kid. Back then it probably protected you. Now it keeps bringing you to the same
+        conclusions and the same situations, even when you want something else.
       </p>
+      <p>
+        That’s why willpower doesn’t last. You can decide to change with your logical mind, but the
+        program runs underneath it. Sooner or later the program wins.
+      </p>
+
+      <h2>How hypnosis rewrites the script</h2>
+      <p>
+        In hypnosis the logical mind steps aside, and we can reach the memories that are shaping your
+        life today. Often it’s a moment you’ve forgotten, or one you remember but never connected to
+        the problem. We look at it again with the eyes you have now, and the meaning you gave it
+        changes.
+      </p>
+      <p>
+        Once the old meaning goes, there’s room for a new script: what you actually want to believe
+        about yourself and how you want to live. I combine hypnosis with breathwork, so the change
+        lands in your body as well as your mind.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">What I help with</div>
+      <h2>Where the old script shows up</h2>
+      <div class="grid grid-2" style="margin-top:24px">
+        {problems.map((p) => (
+          <div class="card">
+            <h3>{p.h1}</h3>
+            <p>{p.intro.split('. ')[0]}.</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="session">
+    <div class="wrap split">
+      <div class="article">
+        <div class="eyebrow">Work with me</div>
+        <h2 style="margin-top:0">A one-to-one hypnosis session</h2>
+        <p>
+          One session with me is {session.price}. It lasts between an hour and an hour and a half,
+          depending on what comes up for you, and I don’t cut it short because the clock says so.
+        </p>
+        <p>
+          Before we meet you fill in a short form, so I already know what you want to change and we
+          can go straight to work.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href={session.book}>Book a session for {session.price}</a>
+        </div>
+      </div>
+      <div>
+        <ul class="day">
+          {steps.map((s) => <li><b>{s.title}</b>{s.text}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split">
+      <img
+        class="photo wide"
+        src="/images/retreat-maloka.jpg"
+        alt="The round ceremony room at Oliver's retreat centre, chairs in a circle under a wooden roof with windows onto green mountains"
+        width="1600"
+        height="1066"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Online or in person</div>
+        <h2 style="margin-top:0">Wherever you are</h2>
+        <p>
+          Most of my sessions happen online, and for most people it works just as well. All you need is
+          a quiet room, a stable connection and a pair of headphones.
+        </p>
+        <p>
+          If you’d rather come in person, I also hold sessions at my retreat centre in the mountains
+          outside Medellín, Colombia. The price is the same either way.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <img
+        class="photo"
+        src="/images/oliver-glozik-guided-breathwork-session.webp"
+        alt="Oliver sitting beside a drum on a wooden balcony above green mountains, guiding a group lying on mats"
+        width="1572"
+        height="1204"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Who I am</div>
+        <h2 style="margin-top:0">I’m Oliver Glozik</h2>
+        <p>
+          I’ve spent more than 4,000 hours working with the subconscious mind, most of it through the
+          retreat work I’ve been doing for the last five and a half years. That time taught me how to
+          help people reach the deeper parts of the mind, the parts they can’t get to by talking.
+        </p>
+        <p>
+          My hypnosis mostly follows the teachings of Marissa Peer. I add my own angle from those years
+          of retreats, and I bring in <a href="/breathwork/">breathwork</a>, because a change you only
+          understand in your head rarely holds.
+        </p>
+        <div class="btn-row">
+          <a class="btn ghost" href="/about/">More about me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <!-- TODO: Oliver to confirm who he won't work with in hypnosis. -->
+      <p class="note" style="margin-top:0">
+        Hypnosis is not right for everyone. If you have a history of psychosis, schizophrenia, bipolar
+        disorder or epilepsy, please talk to me before you book. If you’re in crisis, contact your
+        local emergency services.
+      </p>
+
+      <h2>Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
 
       <div class="cta-box">
-        <h2>Not sure if hypnosis is right for you?</h2>
-        <p>Book a free 20-minute call and ask me anything.</p>
-        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+        <h2>Ready to write a new script?</h2>
+        <p>One session, an hour to an hour and a half, online or in person.</p>
+        <div class="btn-row"><a class="btn" href={session.book}>Book a session for {session.price}</a></div>
       </div>
     </div>
   </section>
