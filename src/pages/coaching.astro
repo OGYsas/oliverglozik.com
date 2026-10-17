@@ -1,40 +1,262 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, where } from '../data/site';
+import ReviewList from '../components/ReviewList.astro';
+import { site } from '../data/site';
+import { reviews } from '../data/reviews';
+
+const familiar = [
+  {
+    title: 'Functioning, not living',
+    text: 'From the outside it all works: the business, the house, the reputation. Inside you’ve been performing for so long you’re not sure what you actually feel any more.',
+  },
+  {
+    title: 'Your body is saying no',
+    text: 'Exhaustion that sleep doesn’t fix, tension, health scares, a nervous system that won’t switch off. The feelings you ignored have started to show up physically.',
+  },
+  {
+    title: 'A marriage that ended',
+    text: 'A divorce or separation has pulled the ground out from under you, and the strategies that built your career don’t work here.',
+  },
+  {
+    title: 'The plan stopped making sense',
+    text: 'You reached the goals you set years ago. Now you’re in the middle of your life asking what any of it was for.',
+  },
+  {
+    title: 'New territory',
+    text: 'You’re used to being the one with the answers. Grief, anger, fear and emptiness are unfamiliar, and you can’t solve them with a spreadsheet.',
+  },
+  {
+    title: 'Nobody who gets both sides',
+    text: 'Your business friends don’t understand the inner work. The healing world doesn’t understand the pressure you carry. You need someone who knows both.',
+  },
+];
+
+const tools = [
+  {
+    title: 'Conversation',
+    text: 'We talk through what’s happening, make sense of it and work out what needs to change in your life and work.',
+  },
+  {
+    title: 'Hypnosis',
+    text: 'We work directly with the patterns and beliefs running underneath, so the change doesn’t depend on willpower.',
+  },
+  {
+    title: 'Breathwork',
+    text: 'Your body gets to let out what you’ve been holding in, instead of you just talking about it.',
+  },
+];
+
+const steps = [
+  { title: 'Free call', text: 'We talk about where you are, what’s happening and whether we’re a fit.' },
+  { title: 'Weekly sessions', text: 'We meet online once a week, using the tool that fits where you are that week.' },
+  { title: 'Work through it', text: 'We go into the emotional side with you, step by step, without you getting lost in it.' },
+  { title: 'Anchor it', text: 'The changes settle into your body and your daily life, so they last after we finish.' },
+];
+
+// Reviews from clients who came from business or a turning point in life.
+const coachingReviews = ['Graydon Ursel', 'Jon Rosenberg', 'Charles Carey', 'Elizabeth Tracy', 'Jason Bern', 'Yunus Aydemir']
+  .map((name) => reviews.find((r) => r.name === name))
+  .filter((r) => r !== undefined);
+
+const faqs = [
+  {
+    q: 'How long do we work together?',
+    a: 'Usually three to six months, depending on where you are when we start. Packages start at eight sessions, and we meet weekly.',
+  },
+  {
+    q: 'Is it online or in person?',
+    a: 'Mostly online, over video. You can do it from home or the office, wherever you can be undisturbed for the session.',
+  },
+  {
+    q: 'How much does it cost?',
+    a: 'It depends on the package that fits you. We go through the options on the free call once we both know what you need.',
+  },
+  {
+    q: 'I’ve never done hypnosis or breathwork. Is that a problem?',
+    a: 'No. Most of my clients haven’t. I explain everything before we use it, and we only bring in a tool when you’re ready for it.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. I’m not a therapist, and coaching is not a replacement for medical or psychological care. If you’re in therapy, coaching can be a good complement. Tell your therapist you’re doing it.',
+  },
+  {
+    q: 'Who is this not for?',
+    a: 'If you want a quick fix, or someone to only hold you accountable to business targets, this isn’t it. This is for people ready to look at what’s underneath the performance.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Base
-  title={`Personal Coaching ${where} | ${site.name}`}
-  description={`One-to-one personal coaching with ${site.name} ${where.toLowerCase()}, combining coaching with hypnosis and breathwork for change that lasts.`}
+  title={`Coaching for Entrepreneurs & Life Transitions | ${site.name}`}
+  description={`One-to-one coaching online with ${site.name} for successful people going through burnout, divorce or a midlife turning point. Coaching, hypnosis and breathwork over three to six months.`}
+  schema={[faqSchema]}
 >
   <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Coaching</div>
+          <h1>For when performing stops working</h1>
+          <p class="lead">
+            You’ve built a successful life by pushing through. Now something has hit, a divorce, a
+            midlife crisis, a body that’s starting to shut down, and pushing through isn’t working any
+            more. I help you work through the emotional side without losing yourself in it.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href={site.bookingUrl}>Book a free call</a>
+            <a class="btn ghost" href="#how">How it works</a>
+          </div>
+        </div>
+        <img
+          class="photo portrait"
+          src="/images/oliver-portrait.jpg"
+          alt="Oliver Glozik smiling, in a floral shirt in front of tropical leaves"
+          width="740"
+          height="928"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Sound familiar?</div>
+      <h2>You’ve been holding it all together for years</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {familiar.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap narrow article">
-      <div class="eyebrow">Coaching</div>
-      <h1>Personal Coaching {where}</h1>
-      <p class="lead">
-        Coaching for people who are ready for a real change in their work, relationships or sense of
-        direction, and want support that goes deeper than goal-setting.
-      </p>
-      <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
-
-      <h2>How my coaching is different</h2>
+      <div class="eyebrow">What I’ve learned</div>
+      <h2 style="margin-top:0">Your feelings didn’t go away. You just stopped listening.</h2>
       <p>
-        Most coaching works with the conscious mind: plans, goals, accountability. I use those too, but
-        I also bring in hypnosis and breathwork to work with the habits and feelings that usually
-        derail a plan. That is often where lasting change actually happens.
+        Most of the people I work with have achieved a lot. To get there, they learned to ignore what
+        they felt and keep functioning. That works for a long time. Then the body starts to shut down,
+        or life forces a change, and everything that was pushed aside comes up at once.
       </p>
+      <p>
+        For someone who is used to being in control, that’s new and disorienting. You can’t strategise
+        your way through grief or emptiness. And most of the help out there is either built for
+        business, with goals and accountability, or for healing, with no idea what your working life
+        asks of you.
+      </p>
+      <p>
+        I’ve lived in both worlds. I can go deep into the emotional work with you and still keep it
+        grounded in the life you actually have to run.
+      </p>
+    </div>
+  </section>
 
-      <h2>How it works</h2>
-      <ul>
-        <li>A free call to understand where you are and where you want to be.</li>
-        <li>A programme of regular one-to-one sessions, online or in person.</li>
-        <li>Practices and recordings to use between sessions.</li>
-      </ul>
+  <section class="section alt" id="how">
+    <div class="wrap split">
+      <div class="article">
+        <div class="eyebrow">How it works</div>
+        <h2 style="margin-top:0">Three to six months, one week at a time</h2>
+        <p>
+          I accompany you through this period one to one, mostly online. Packages start at eight
+          sessions, and most people work with me for three to six months, depending on where they are
+          when we start.
+        </p>
+        <p>
+          Each week we use the tool that fits where you are in your process, so you can anchor what’s
+          changing and build what you need next.
+        </p>
+        <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
+      </div>
+      <div>
+        <ul class="day">
+          {steps.map((s) => <li><b>{s.title}</b>{s.text}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">The tools</div>
+      <h2>More than a conversation</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {tools.map((t) => (
+          <div class="card">
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+          </div>
+        ))}
+      </div>
+      <p class="muted" style="margin-top:1em">
+        Read more about <a href="/hypnosis/">hypnosis</a> and <a href="/breathwork/">breathwork</a>.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <div class="eyebrow">Who I am</div>
+      <h2 style="margin-top:0">I’m Oliver Glozik</h2>
+      <!-- TODO: Oliver to check this story against his own words. -->
+      <p>
+        I was the guy with good grades who followed the traditional path, then went the
+        entrepreneurial route, and eventually found my way to this work. I know what it’s like to be
+        driven by performance, and I know what it takes to come back to yourself.
+      </p>
+      <p>
+        I’m not a therapist. I’ve worked with more than {site.stats[0].value.replace('+', '')} people,
+        hosted over {site.stats[1].value.replace('+', '')} retreats and built a retreat centre in the
+        mountains outside Medellín, Colombia. Coaching is where I bring all of that to one person at a
+        time.
+      </p>
+      <div class="btn-row"><a class="btn ghost" href="/about/">More about me</a></div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">What people say</div>
+      <h2>After working with me</h2>
+      <ReviewList reviews={coachingReviews} />
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <p class="note">
+        If you’re in crisis or thinking about harming yourself, contact your local emergency services
+        straight away.
+      </p>
 
       <div class="cta-box">
-        <h2>Let's talk</h2>
-        <p>Book a free 20-minute call to see if coaching with me is a fit.</p>
-        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+        <h2>You don’t have to work this out alone</h2>
+        <p>Book a free call and we’ll see if working together is right for you.</p>
+        <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
       </div>
     </div>
   </section>
