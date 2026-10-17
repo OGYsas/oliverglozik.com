@@ -51,10 +51,17 @@ const allSchema = [localBusiness, ...schema];
         <a class="logo" href="/">{site.name}</a>
         <button class="menu-toggle" aria-expanded="false" aria-controls="nav-links">Menu</button>
         <ul class="nav-links" id="nav-links">
-          <li><a href="/coaching/">Coaching</a></li>
-          <li><a href="/breathwork/">Breathwork</a></li>
-          <li><a href="/hypnosis/">Hypnosis</a></li>
-          <li><a href="/retreats/">Retreats</a></li>
+          <li>
+            <details class="dropdown">
+              <summary>Tools</summary>
+              <ul>
+                <li><a href="/coaching/">Coaching</a></li>
+                <li><a href="/breathwork/">Breathwork</a></li>
+                <li><a href="/hypnosis/">Hypnosis</a></li>
+                <li><a href="/retreats/">Retreats</a></li>
+              </ul>
+            </details>
+          </li>
           <li><a href="/reviews/">Reviews</a></li>
         </ul>
         <a class="btn" href={site.bookingUrl}>Book a free call</a>
@@ -105,6 +112,12 @@ const allSchema = [localBusiness, ...schema];
       toggle?.addEventListener('click', () => {
         const open = links?.classList.toggle('open');
         toggle.setAttribute('aria-expanded', String(!!open));
+      });
+      // Close the Tools dropdown when clicking anywhere outside it.
+      document.addEventListener('click', (e) => {
+        document.querySelectorAll('details.dropdown[open]').forEach((d) => {
+          if (!d.contains(e.target as Node)) d.removeAttribute('open');
+        });
       });
     </script>
   </body>

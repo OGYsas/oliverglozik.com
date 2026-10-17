@@ -75,8 +75,9 @@ p { margin: 0 0 1em; }
 .nav .btn { padding: 9px 18px; font-size: 0.95rem; }
 .dropdown { position: relative; }
 .dropdown > summary {
-  list-style: none; cursor: pointer; font-weight: 600; color: var(--accent); font-size: 0.97rem;
+  list-style: none; cursor: pointer; font-weight: 500; color: var(--ink); font-size: 0.97rem;
 }
+.dropdown > summary:hover, .dropdown[open] > summary { color: var(--accent); }
 .dropdown > summary::-webkit-details-marker { display: none; }
 .dropdown > summary::after { content: ' ▾'; }
 .dropdown ul {
