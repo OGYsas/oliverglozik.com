@@ -1,3 +1,7 @@
 # Renamed pages (Oct 2026): "hypnotherapy" URLs now live under "hypnosis".
 RedirectMatch 301 ^/hypnotherapy/?$ /hypnosis/
-RedirectMatch 301 ^/hypnotherapy-for-anxiety/?$ /hypnosis-for-anxiety/
+# hypnosis-for-anxiety is hidden for now (below), so skip the extra hop.
+RedirectMatch 301 ^/hypnotherapy-for-anxiety/?$ /
+
+# Pages that are not ready yet: send them to the home page (see astro.config.mjs).
+RedirectMatch 301 ^/(about|help|hypnosis-for-weight-loss|hypnosis-to-quit-smoking|hypnosis-for-anxiety|hypnosis-for-insomnia)/?$ /
