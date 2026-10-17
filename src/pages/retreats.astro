@@ -1,36 +1,259 @@
 ---
 import Base from '../layouts/Base.astro';
 import { site } from '../data/site';
+
+const forYou = [
+  {
+    title: 'You feel stuck',
+    text: 'The same patterns keep coming back, and an hour a week isn’t giving you enough space to shift them.',
+  },
+  {
+    title: 'You need a real break',
+    text: 'You’re running on empty and want to step out of everyday life long enough to actually rest.',
+  },
+  {
+    title: 'You’re at a turning point',
+    text: 'A new chapter, a loss, a big decision. You want clarity on what comes next and support while you find it.',
+  },
+];
+
+const formats = [
+  {
+    title: '4 days',
+    text: 'Thursday to Sunday. A reset: enough time to slow down, breathe and go home with something new.',
+  },
+  {
+    title: '7 days',
+    text: 'Saturday to Friday. More time to go deep, rest in between and let what comes up settle before you leave.',
+  },
+];
+
+const day = [
+  { time: 'Morning', text: 'Fresh fruit, brunch, then a sharing circle where the group talks about what is coming up.' },
+  { time: 'Midday', text: 'Breathwork, group hypnosis or art therapy, depending on the day.' },
+  { time: 'Afternoon', text: 'Time for yourself: rest, walk the land, sit by the creek.' },
+  { time: 'Evening', text: 'Dinner together, and an early night.' },
+];
+
+const includes = [
+  'Conscious Connected Breathing sessions.',
+  'Group hypnosis sessions, with one-to-one hypnosis available.',
+  'Opening, sharing and closing circles.',
+  'Art therapy.',
+  'All meals, cooked fresh on site.',
+  'Your room in the house, and pick-up and drop-off in Medellín.',
+  'An online integration course and free monthly calls after you go home.',
+];
+
+const faqs = [
+  {
+    q: 'Do I need any experience with breathwork or hypnosis?',
+    a: 'No. Most people arrive with little or no experience. Every practice is explained before we start, and you can always go at your own pace.',
+  },
+  {
+    q: 'Is a retreat right for me?',
+    a: 'Breathwork isn’t suitable for everyone, for example during pregnancy or with some heart and mental health conditions. Before you book we have a short call about your health and what you hope to get from the retreat, so we can decide together.',
+  },
+  {
+    q: 'How big are the groups?',
+    a: 'Twelve people at most. Depending on the size of the group, four to seven people from my team are there to support you, so nobody gets lost in the crowd.',
+  },
+  {
+    q: 'Where is it and how do I get there?',
+    a: 'In a private house on a mountainside near Medellín, Colombia. We pick you up in Medellín on the first day and bring you back at lunchtime on the last day. If you have a flight to catch, tell us and we can plan around it.',
+  },
+  {
+    q: 'What is the food like?',
+    a: 'Everything is cooked fresh on site, and all meals are included. Vegetarian, vegan and gluten-free are no problem. Tell us what you need when you book.',
+  },
+  {
+    q: 'How often are the retreats?',
+    a: 'Every month, in a 4-day and a 7-day format. Get in touch and I’ll send you the next dates and how many places are left.',
+  },
+  {
+    q: 'What happens after the retreat?',
+    a: 'The weeks after a retreat matter as much as the retreat itself. You get an online integration course and can join our free monthly calls. If you want one-to-one support while the changes settle, you can continue with hypnosis or coaching sessions with me.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Base
-  title={`Breathwork & Hypnosis Retreats | ${site.name}`}
-  description={`Retreats with ${site.name}: several days of breathwork, hypnosis and coaching in a small group. ${site.stats[1].value} retreats hosted.`}
+  title={`Healing Retreats near Medellín | ${site.name}`}
+  description={`Monthly 4- and 7-day healing retreats in the mountains near Medellín, Colombia. Breathwork, group hypnosis and circles in a group of 12 at most. ${site.stats[1].value} retreats hosted.`}
+  schema={[faqSchema]}
 >
   <section class="section">
-    <div class="wrap narrow article">
-      <div class="eyebrow">Retreats</div>
-      <h1>Breathwork &amp; Hypnosis Retreats</h1>
-      <p class="lead">
-        Over {site.stats[1].value} retreats hosted. A few days away from everyday life to reset,
-        combining breathwork, hypnosis and coaching in a small, supportive group.
-      </p>
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Retreats</div>
+          <h1>Healing retreats in the mountains near Medellín</h1>
+          <p class="lead">
+            {site.stats[1].value} retreats hosted. Every month, 4 or 7 days away from everyday life:
+            breathwork, group hypnosis and circles, in a group of twelve people at most.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href={site.bookingUrl}>Ask about the next retreat</a>
+            <a class="btn ghost" href="#a-day">See a typical day</a>
+          </div>
+        </div>
+        <img
+          class="photo wide"
+          src="/images/retreat-maloka.jpg"
+          alt="A round group room with a wooden roof, a circle of teal armchairs and wide windows onto forested hills"
+          width="1600"
+          height="1066"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
 
-      <h2>Upcoming retreats</h2>
-      <!-- TODO: add upcoming retreats (name, dates, location, places left, booking link) -->
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Why go on a retreat?</h2>
       <p>
-        New dates are announced soon. Get in touch and I will let you know as soon as the next retreat
-        opens.
+        A single session can open something up. But when you go home straight afterwards, everyday life
+        quickly takes over again. On a retreat there’s time for what comes up to settle. You breathe,
+        rest, talk and practise day after day, and the changes have a chance to become part of you.
+      </p>
+      <p>
+        Being in a group helps too. Hearing other people speak about what they’re working through
+        makes it easier to be honest about your own, and you go home knowing you’re not the only one.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Who it’s for</div>
+      <h2>A retreat might be right for you if…</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {forYou.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Every month</div>
+      <h2>Two ways to come</h2>
+      <div class="grid grid-2" style="margin-top:24px">
+        {formats.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="a-day">
+    <div class="wrap split">
+      <div class="article">
+        <div class="eyebrow">On retreat</div>
+        <h2 style="margin-top:0">What a day can look like</h2>
+        <p class="muted">No two days are the same, but most follow a slow rhythm like this.</p>
+        <ul class="day">
+          {day.map((d) => <li><b>{d.time}</b>{d.text}</li>)}
+        </ul>
+      </div>
+      <div class="article">
+        <h2 style="margin-top:0">What a retreat includes</h2>
+        <ul>
+          {includes.map((i) => <li>{i}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <div class="eyebrow">The place</div>
+      <h2 style="margin-top:0">A house on the mountain</h2>
+      <p>
+        The retreats happen in a private house on a mountainside outside Medellín, the last house on
+        the road, next to a nature reserve. The land is 20,000 square metres, with a creek and a
+        waterfall, a garden of more than a thousand plants, and fireflies at night.
+      </p>
+      <p>
+        We work in a round group room built for this: wooden roof, wide windows onto the hills, and
+        good acoustics for breathwork and hypnosis. There’s nothing you need to organise. You arrive,
+        and the days take care of themselves.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <img
+        class="photo portrait"
+        src="/images/oliver-portrait.jpg"
+        alt="Oliver Glozik, founder of the retreats"
+        width="740"
+        height="928"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Who runs it</div>
+        <h2 style="margin-top:0">My retreats, my team</h2>
+        <p>
+          I founded these retreats and have hosted over {site.stats[1].value} of them. Over the years I
+          built a team I trust, and four to seven of them are with the group at every retreat,
+          depending on its size. I’m often there myself.
+        </p>
+        <p>
+          The team’s job is to hold the space: to keep the group safe, to notice what each person needs,
+          and to make sure nobody goes deeper than they’re ready for.
+        </p>
+        <div class="btn-row"><a class="btn ghost" href="/about/">More about me</a></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Upcoming retreats</h2>
+      <p>
+        Retreats run every month. Get in touch and I’ll send you the next dates and how many places are
+        left.
       </p>
       <div class="btn-row"><a class="btn" href={site.bookingUrl}>Ask about the next retreat</a></div>
 
-      <h2>What a retreat includes</h2>
-      <ul>
-        <li>Daily breathwork sessions, from gentle to deep.</li>
-        <li>Group hypnosis and guided practices.</li>
-        <li>Coaching circles and time for one-to-one conversations.</li>
-        <li>Time in nature, good food and space to rest.</li>
-      </ul>
+      <h2>Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h2>Not sure yet?</h2>
+        <p>
+          Book a free call. We’ll talk about what you’re looking for and whether a retreat or
+          one-to-one work is the better fit.
+        </p>
+        <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
+      </div>
     </div>
   </section>
 </Base>

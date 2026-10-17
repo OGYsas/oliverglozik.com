@@ -1,7 +1,6 @@
 ---
 import '../styles/global.css';
 import { site } from '../data/site';
-import { problems } from '../data/problems';
 
 interface Props {
   title: string;
@@ -56,15 +55,7 @@ const allSchema = [localBusiness, ...schema];
           <li><a href="/breathwork/">Breathwork</a></li>
           <li><a href="/hypnosis/">Hypnosis</a></li>
           <li><a href="/retreats/">Retreats</a></li>
-          <li>
-            <details class="dropdown">
-              <summary>What I help with</summary>
-              <ul>
-                {problems.map((p) => <li><a href={`/${p.slug}/`}>{p.label}</a></li>)}
-                <li><a href="/help/"><strong>See all →</strong></a></li>
-              </ul>
-            </details>
-          </li>
+          <li><a href="/reviews/">Reviews</a></li>
           <li><a href="/about/">About</a></li>
         </ul>
         <a class="btn" href={site.bookingUrl}>Book a free call</a>
@@ -88,16 +79,10 @@ const allSchema = [localBusiness, ...schema];
             </ul>
           </div>
           <div>
-            <h3>I help with</h3>
-            <ul>
-              {problems.map((p) => <li><a href={`/${p.slug}/`}>{p.label}</a></li>)}
-              <li><a href="/help/">All problems →</a></li>
-            </ul>
-          </div>
-          <div>
             <h3>About</h3>
             <ul>
               <li><a href="/about/">About Oliver</a></li>
+              <li><a href="/reviews/">Reviews</a></li>
             </ul>
           </div>
           <div>

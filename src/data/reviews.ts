@@ -1,6 +1,31 @@
-// Client reviews (from Google). Shown on the homepage in the "What people say" section.
-// Add, remove or reorder entries here.
-export const reviews = [
+// Client reviews (from Google). All of them are listed on /reviews/; the ones marked
+// `featured: true` are also shown on the homepage. Add, remove or reorder entries here.
+export const reviews: { name: string; text: string; featured?: boolean }[] = [
+  {
+    name: 'Graydon Ursel',
+    featured: true,
+    text: 'From an ROI standpoint, I am confident I will get a 1000X return on the money I paid because this session gave me some extremely valuable perspective on my business and where I want to take it in the next year. I feel more excited and motivated than ever to continue expanding my business and expanding my life. I highly recommend connecting with Oliver.',
+  },
+  {
+    name: 'James Rafferty',
+    featured: true,
+    text: "I was slightly apprehensive and unsure about the whole thing before arriving, but I left a completely different person, finding a new version of myself that didn't exist before. So, so, so happy I took part in this experience. Truly life changing.",
+  },
+  {
+    name: 'Zee',
+    featured: true,
+    text: "While the work was undeniably intense and at times deeply confronting, it was exactly what my spirit needed. This was not a vacation—it was a sacred journey inward, one that asked me to face my fears, release old patterns, and truly surrender.",
+  },
+  {
+    name: 'Jon Rosenberg',
+    featured: true,
+    text: "I had one of the most meaningful and transformative experiences of my 58 years.",
+  },
+  {
+    name: 'Cassandra Molitoris',
+    featured: true,
+    text: "Such a Powerful and Beautiful experience! Truly transformational. I went for healing and I found what I needed after 2 years of searching. I think everyone in my cohort did! The staff is amazing. They really care.",
+  },
   {
     name: 'Brittany Lammon',
     text: "From the moment I arrived, I felt embraced by the warmth and passion of the team. Oliver's deep dedication to the healing process was apparent from the start, and his passion guided us through the journey with such care and intention.",
@@ -20,10 +45,6 @@ export const reviews = [
   {
     name: 'Elizabeth Tracy',
     text: 'I full heartedly recommend being in retreat with Oliver. He has a quality about him that makes you feel safe, heard, seen as well as deeply guided - while making room for your own intuition and inner guidance.',
-  },
-  {
-    name: 'Graydon Ursel',
-    text: 'From an ROI standpoint, I am confident I will get a 1000X return on the money I paid because this session gave me some extremely valuable perspective on my business and where I want to take it in the next year. I feel more excited and motivated than ever to continue expanding my business and expanding my life. I highly recommend connecting with Oliver.',
   },
   {
     name: 'Yoni Love',
@@ -90,24 +111,12 @@ export const reviews = [
     text: "Oliver was my anchor—humble, kind, caring, and confident, made me feel safe. Transparent and respectful, he was like a big brother who truly had my back.",
   },
   {
-    name: 'James Rafferty',
-    text: "I was slightly apprehensive and unsure about the whole thing before arriving, but I left a completely different person, finding a new version of myself that didn't exist before. So, so, so happy I took part in this experience. Truly life changing.",
-  },
-  {
     name: 'Gisela Kottmeier',
     text: "Definitely a life-changing experience!! Oliver was an amazing host. I loved how he incorporated various activities to create community & make us all feel comfortable beforehand. It is a great retreat especially for your first time. Very safe & supportive & caring environment.",
   },
   {
-    name: 'Zee',
-    text: "While the work was undeniably intense and at times deeply confronting, it was exactly what my spirit needed. This was not a vacation—it was a sacred journey inward, one that asked me to face my fears, release old patterns, and truly surrender.",
-  },
-  {
     name: 'Bennett Waxse',
     text: "An exceptional retreat in every regard. The team strikes the perfect balance—deeply experienced and welcoming, providing expert guidance without ever feeling intrusive. Beyond transformative inner work, the community surprised me most: I arrived seeking healing and left with lasting friendships. If you're considering this path, you've found the right place.",
-  },
-  {
-    name: 'Jon Rosenberg',
-    text: "I had one of the most meaningful and transformative experiences of my 58 years.",
   },
   {
     name: 'Yunus Aydemir',
@@ -116,10 +125,6 @@ export const reviews = [
   {
     name: 'Rob G',
     text: "This retreat was by far the best experience I have ever had to date. The people there are amazing, supportive and knowledgeable. You can rest assured that you will be treated well and safely while getting the healing you need on an individual level. I recommend this to everyone who needs to reach a higher level of living.",
-  },
-  {
-    name: 'Cassandra Molitoris',
-    text: "Such a Powerful and Beautiful experience! Truly transformational. I went for healing and I found what I needed after 2 years of searching. I think everyone in my cohort did! The staff is amazing. They really care.",
   },
   {
     name: 'D S',

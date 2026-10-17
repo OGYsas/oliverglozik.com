@@ -2,6 +2,7 @@
 import Base from '../layouts/Base.astro';
 import { site, where, services } from '../data/site';
 import { problems } from '../data/problems';
+import ReviewList from '../components/ReviewList.astro';
 import { reviews } from '../data/reviews';
 
 const faqs = [
@@ -54,9 +55,14 @@ const faqSchema = {
             <a class="btn ghost" href="/retreats/">See retreats</a>
           </div>
         </div>
-        <div class="hero-art" role="img" aria-label="Decorative image">
-          <!-- TODO: replace with a photo of Oliver working with a client or at a retreat -->
-        </div>
+        <img
+          class="photo portrait"
+          src="/images/oliver-portrait.jpg"
+          alt="Oliver Glozik, hypnotist, breathwork facilitator and coach"
+          width="740"
+          height="928"
+          fetchpriority="high"
+        />
       </div>
       <div class="stats">
         {site.stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
@@ -64,7 +70,18 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section alt" id="reviews">
+    <div class="wrap">
+      <div class="eyebrow">Reviews</div>
+      <h2>What people say</h2>
+      <ReviewList reviews={reviews.filter((r) => r.featured)} />
+      <div class="btn-row">
+        <a class="btn ghost" href="/reviews/">Read all {reviews.length} reviews</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap">
       <h2>Ways to work with me</h2>
       <div class="grid grid-4" style="margin-top:28px">
@@ -81,18 +98,16 @@ const faqSchema = {
     </div>
   </section>
 
-  <section class="section">
+  <section class="section alt">
     <div class="wrap">
       <h2>What would you like help with?</h2>
-      <p class="lead">Each of these has its own page explaining how I work with it.</p>
       <div class="chips" style="margin-top:20px">
-        {problems.map((p) => <a class="chip" href={`/${p.slug}/`}>{p.label}</a>)}
-        <a class="chip more" href="/help/">See all →</a>
+        {problems.map((p) => <span class="chip">{p.label}</span>)}
       </div>
     </div>
   </section>
 
-  <section class="section alt">
+  <section class="section">
     <div class="wrap">
       <h2>How it works</h2>
       <div class="grid grid-3" style="margin-top:28px">
@@ -111,25 +126,6 @@ const faqSchema = {
           <h3>Keep it going</h3>
           <p>Recordings, daily practices, or a retreat to go deeper.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="reviews">
-    <div class="wrap">
-      <div class="eyebrow">Reviews</div>
-      <h2>What people say</h2>
-      <p class="lead">Five-star reviews from people who have worked with me, at retreats and in sessions.</p>
-      <div class="reviews">
-        {
-          reviews.map((r) => (
-            <figure class="review">
-              <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
-              <blockquote>{r.text}</blockquote>
-              <figcaption>{r.name}</figcaption>
-            </figure>
-          ))
-        }
       </div>
     </div>
   </section>
