@@ -1,0 +1,18 @@
+---
+interface Props {
+  reviews: { name: string; text: string }[];
+}
+const { reviews } = Astro.props;
+---
+
+<div class="reviews">
+  {
+    reviews.map((r) => (
+      <figure class="review">
+        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+        <blockquote>{r.text}</blockquote>
+        <figcaption>{r.name}</figcaption>
+      </figure>
+    ))
+  }
+</div>

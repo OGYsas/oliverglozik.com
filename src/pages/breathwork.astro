@@ -1,50 +1,334 @@
 ---
 import Base from '../layouts/Base.astro';
-import { site, where } from '../data/site';
+import ReviewList from '../components/ReviewList.astro';
+import { site } from '../data/site';
+
+// RELEASE is sold on Whop. The checkout link skips the Whop sales page.
+const release = {
+  checkout: 'https://oliver-release.whop.site/checkout/plan_NiEdD2aalLu7t',
+  page: 'https://oliver-release.whop.site/',
+  price: '$27',
+};
+
+const familiar = [
+  {
+    title: 'Fine on the outside',
+    text: 'You show up, get things done and look after everyone else. Underneath, something feels heavy and you can’t say what.',
+  },
+  {
+    title: 'No off button',
+    text: 'Your head keeps running the same loop at 2am. You want to relax without the worries of life sitting on your chest.',
+  },
+  {
+    title: 'Something to get through the day',
+    text: 'A drink to wind down, your phone in bed, a pill to sleep or to function. Anything so you don’t have to feel it.',
+  },
+  {
+    title: 'Life forced a change',
+    text: 'A loss you never really grieved, a marriage or relationship that ended, or a midlife moment where the old plan stopped making sense.',
+  },
+  {
+    title: 'Everyone else first',
+    text: 'People pleasing, overgiving, perfectionism. You feel obligated to everyone and have lost track of what you actually want.',
+  },
+  {
+    title: 'Disconnected from yourself',
+    text: 'Brain fog, tension nobody can explain, a body that never quite feels safe. You know you’re not living life on your own terms.',
+  },
+];
+
+const steps = [
+  { title: 'Lie down', text: 'Headphones in, somewhere you won’t be disturbed.' },
+  { title: 'Breathe', text: 'Follow my voice and the music into a deeper, connected breath.' },
+  { title: 'Let it come', text: 'Whatever surfaces, you let it move through instead of pushing it back down.' },
+  { title: 'Come back', text: 'A slow, quiet landing so you finish grounded, not wired.' },
+];
+
+// Matches the Whop listing. Add the "Pressure Valve" bonus here once it exists.
+const included = [
+  'The RELEASE session: a 60-minute guided breathwork journey with music, yours to keep.',
+  'Before you breathe: a short video on how to set up and what to expect.',
+  'After you breathe: an integration guide to make sense of what came up.',
+  'Lifetime access, so you can come back to it whenever the pressure builds.',
+];
+
+const goals = [
+  { title: 'Focus', text: 'For the days your head is full of fog and you need to think clearly.' },
+  { title: 'Switching off', text: 'For the evenings you can’t come down from the day.' },
+  { title: 'Before a workout', text: 'For more energy and drive when you train.' },
+  { title: 'Sleep', text: 'For the nights you lie awake with your mind still running.' },
+];
+
+const breathworkReviews = [
+  {
+    name: 'Yunus Aydemir',
+    text: 'I’ve done breathwork at several high-end retreats, and Oliver’s session was the best by far. His technique goes deeper and is more powerful than anything I’d tried. It was intense, but I came out feeling incredibly clear and light. Whether you’re new to breathwork or experienced, he guides you through it masterfully.',
+  },
+  {
+    name: 'Alexander Webeer',
+    text: 'The breathwork sessions with Oliver are amazing. Incredibly guided in a safe container adding all his knowledge around healing to being an entrepreneur and coach. The process itself is very powerful & transformative with strong shifts in healing body, mind & soul.',
+  },
+  {
+    name: 'Jasem Ashkanani',
+    text: 'The breathwork exercises were nothing short of powerful. They allowed me to connect with my inner self on a profound level. It was a cathartic experience that left me feeling lighter and more in touch with my true self.',
+  },
+  {
+    name: 'Jenna Ram',
+    text: 'I regularly do the recorded breath work session and it always helps me when I am stuck overthinking.',
+  },
+  {
+    name: 'K W',
+    text: 'I went to Oliver’s breathwork class and was so glad I did. Breathwork always sounded intimidating but once I arrived, the environment was so relaxing and comforting. It felt I was truly giving back to myself. Thank you Oliver!',
+  },
+];
+
+const faqs = [
+  {
+    q: 'I’ve never done breathwork. Is this for me?',
+    a: 'Yes. You don’t need any experience. Everything is explained before you start, and if you can lie down and breathe, you can do this.',
+  },
+  {
+    q: 'What will I feel?',
+    a: 'It’s different for everyone. Some people cry, shake, laugh or feel a wave of anger or sadness. Others feel tingling, warmth or a deep quiet they haven’t felt in years. Whatever comes up is your body letting go of something it has been holding. There is no wrong way for it to look.',
+  },
+  {
+    q: 'What if nothing happens?',
+    a: 'That’s more common the first time than you’d think, especially if you’re used to keeping everything under control. Your body has to learn that it’s safe to let go. For many people the second or third session opens up much more.',
+  },
+  {
+    q: 'What if it gets too intense?',
+    a: 'You’re always in control. Slow down or breathe normally at any point and the intensity settles within a minute or two.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. I’m not a therapist, and breathwork is not a replacement for medical or psychological care. If you’re in therapy it can be a good complement. Tell your therapist you’re doing it.',
+  },
+  {
+    q: 'Is breathwork safe?',
+    a: 'For most healthy adults, yes. The deep release work is intense, though, so don’t do it if you have a heart condition or high blood pressure, epilepsy, glaucoma or a detached retina, are pregnant, have had recent surgery, or have a history of psychosis or bipolar disorder. If you take medication for your heart, blood pressure, seizures or mental health, check with your doctor first.',
+  },
+  {
+    q: 'How is this different from the breathing techniques for focus or sleep?',
+    a: 'RELEASE is a long, deep session for letting out what you have been carrying, and you do it once a week at most. The techniques for focus, switching off, training or sleep are short and gentle, and you can use them every day.',
+  },
+  {
+    q: 'What if RELEASE isn’t for me?',
+    a: 'Do the session. If you don’t feel a real shift, email me within 30 days and I’ll refund you.',
+  },
+];
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
 ---
 
 <Base
-  title={`Breathwork Sessions ${where} | ${site.name}`}
-  description={`Somatic and conscious connected breathwork sessions with ${site.name} ${where.toLowerCase()}, one-to-one, in groups and on retreats.`}
+  title={`Breathwork | ${site.name}`}
+  description={`Guided breathwork with ${site.name} to let out what you've been holding in. Start tonight with RELEASE, a 60-minute session for ${release.price}, or ask about techniques for focus, sleep and stress.`}
+  schema={[faqSchema]}
 >
   <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">Breathwork</div>
+          <h1>Breathwork that lets out what you’ve been carrying</h1>
+          <p class="lead">
+            You can’t think your way out of what you feel. Talking helps you understand it, but the
+            emotion itself sits in your body. Breathwork gives your body a way to let it out.
+          </p>
+          <div class="btn-row">
+            <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+            <a class="btn ghost" href="#techniques">Breathing for focus, sleep &amp; stress</a>
+          </div>
+        </div>
+        <img
+          class="photo portrait"
+          src="/images/oliver-portrait.jpg"
+          alt="Oliver Glozik, breathwork facilitator"
+          width="740"
+          height="928"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">Sound familiar?</div>
+      <h2>You’ve been holding it together for a long time</h2>
+      <div class="grid grid-3" style="margin-top:24px">
+        {familiar.map((f) => (
+          <div class="card">
+            <h3>{f.title}</h3>
+            <p>{f.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
     <div class="wrap narrow article">
-      <div class="eyebrow">Breathwork</div>
-      <h1>Breathwork Sessions {where}</h1>
+      <div class="eyebrow">What I’ve learned</div>
+      <h2 style="margin-top:0">It isn’t a thinking problem</h2>
+      <p>
+        After guiding more than {site.stats[0].value.replace('+', '')} people through breathwork and
+        retreats, here is what I keep seeing: most of what people fight with, the overthinking, the bad
+        sleep, the numbing, the restlessness, sits on top of emotions they pushed down a long time ago.
+        Anger, grief, fear. Every loop in your head is fuelled by one of them. Let the emotion go and
+        the thoughts lose their grip.
+      </p>
+      <p>
+        That’s also why sitting still and meditating so often goes nowhere for people like us. You’re
+        asking an overthinking mind to quiet itself. With breathwork you don’t have to. After a few
+        minutes of deeper, connected breathing, the thinking mind steps back and your body does the
+        work.
+      </p>
+      <p>
+        And you don’t have to turn healing into your new identity, or quit your job and move to the
+        jungle. Let out what you’ve been carrying, then go and live your life on your own terms.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt" id="release">
+    <div class="wrap split">
+      <div class="article">
+        <div class="eyebrow">Start here · {release.price}</div>
+        <h2 style="margin-top:0">RELEASE: let out what you’ve been numbing</h2>
+        <p>
+          A 60-minute guided breathwork session you do at home. No talking, no sharing, no flying
+          anywhere. Just you, your breath, music and my voice guiding you through every minute.
+        </p>
+        <p>
+          For some it comes out as tears. For others it’s shaking, anger, laughter, or a deep quiet
+          they haven’t felt in years. There’s no right way for it to look. You keep breathing and I
+          guide you back.
+        </p>
+        <h3 style="margin-top:1.5em">What you get</h3>
+        <ul>
+          {included.map((i) => <li>{i}</li>)}
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+          <a class="btn ghost" href={release.page}>See the full details</a>
+        </div>
+        <p class="muted" style="margin-top:1em;font-size:0.95rem">
+          One-time payment, instant access. 30-day guarantee: if you don’t feel a real shift, email me
+          and I’ll refund you.
+        </p>
+      </div>
+      <div>
+        <ul class="day">
+          {steps.map((s) => <li><b>{s.title}</b>{s.text}</li>)}
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="techniques">
+    <div class="wrap">
+      <div class="eyebrow">Breathing for a specific goal</div>
+      <h2>Not looking for a deep release?</h2>
       <p class="lead">
-        Breathwork uses deliberate breathing patterns to calm the nervous system, release stored tension
-        and reconnect you with your body. It is one of the most direct ways to change how you feel.
+        Breathing is the one part of your nervous system you can steer on purpose. The right technique
+        can sharpen you, calm you down or get you ready to train. I teach these as short, simple
+        practices you can use every day.
       </p>
-      <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
+      <div class="grid grid-4" style="margin-top:24px">
+        {goals.map((g) => (
+          <div class="card">
+            <h3>{g.title}</h3>
+            <p>{g.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="btn-row">
+        <a class="btn" href={site.bookingUrl}>Tell me what you need</a>
+      </div>
+      <p class="muted" style="margin-top:1em">
+        Send me a message with what you want help with, and I’ll tell you which technique fits and how
+        we can work on it together.
+      </p>
+    </div>
+  </section>
 
-      <h2>Somatic breathwork</h2>
-      <p>
-        Somatic breathwork focuses on sensation in the body. We use the breath to notice where you hold
-        stress and tension and to let it move, often with a strong sense of release afterwards.
+  <section class="section alt">
+    <div class="wrap split">
+      <img
+        class="photo wide"
+        src="/images/retreat-maloka.jpg"
+        alt="A round group room with a wooden roof, a circle of armchairs and wide windows onto forested hills"
+        width="1600"
+        height="1066"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Who I am</div>
+        <h2 style="margin-top:0">I’m Oliver Glozik</h2>
+        <!-- TODO: Oliver to check this story against his own words. -->
+        <p>
+          I was the guy with good grades who followed the traditional path, then went the
+          entrepreneurial route, and eventually found my way to this work. I’m not a therapist. I
+          figured out my own stuff, and I’ve since sat with more than
+          {site.stats[0].value.replace('+', '')} people while they went through theirs.
+        </p>
+        <p>
+          My group breathwork was featured on MTV’s <em>The Surreal Life</em> (Season 8: Villa of
+          Secrets), and I built a
+          retreat centre in the mountains outside Medellín, Colombia, where breathwork is part of every
+          retreat. It also runs through my <a href="/hypnosis/">hypnosis</a> and
+          <a href="/coaching/">coaching</a> work, where it helps the changes settle in the body.
+        </p>
+        <div class="btn-row">
+          <a class="btn ghost" href="/retreats/">Breathwork on retreat</a>
+          <a class="btn ghost" href="/about/">More about me</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">What people say</div>
+      <h2>After breathing with me</h2>
+      <ReviewList reviews={breathworkReviews} />
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <p class="note" style="margin-top:0">
+        The deep release work is not for everyone. If you are pregnant, have epilepsy, a heart
+        condition, high blood pressure, glaucoma, have had recent surgery or have a history of psychosis
+        or bipolar disorder, please talk to me or your doctor first. If you’re in crisis, contact your
+        local emergency services.
       </p>
 
-      <h2>Conscious connected breathwork</h2>
-      <p>
-        A continuous breathing rhythm without pauses, held over a longer session. It can bring up and
-        clear emotions that are hard to reach by talking.
-      </p>
-
-      <h2>One-to-one, groups and retreats</h2>
-      <p>
-        I offer private sessions online or in person, group sessions, and breathwork as a core part of
-        every <a href="/retreats/">retreat</a>. Breathwork also runs through my
-        <a href="/hypnosis/">hypnosis</a> work, where it helps the changes settle in the body.
-      </p>
-
-      <p class="note">
-        Breathwork is not suitable for everyone. If you are pregnant, have epilepsy, a heart condition,
-        high blood pressure or a history of psychosis, please tell me on our call before booking.
-      </p>
+      <h2>Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
 
       <div class="cta-box">
-        <h2>Try a session</h2>
-        <p>Start with a free call to find the right format for you.</p>
-        <a class="btn" href={site.bookingUrl}>Book a free call</a>
+        <h2>You’ve carried it long enough</h2>
+        <p>
+          You don’t have to talk about it or figure it out. You just have to lie down and breathe.
+        </p>
+        <div class="btn-row"><a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a></div>
       </div>
     </div>
   </section>

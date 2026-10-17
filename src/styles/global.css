@@ -163,6 +163,22 @@ a.card:hover { border-color: var(--accent); }
   display: flex; align-items: center; justify-content: center; color: #8a6a3a; text-align: center; padding: 20px;
 }
 
+/* Photos */
+.photo { display: block; width: 100%; height: auto; border-radius: 24px; object-fit: cover; }
+.photo.portrait { aspect-ratio: 4 / 5; }
+.photo.wide { aspect-ratio: 3 / 2; }
+@media (max-width: 800px) { .hero .photo.portrait { max-width: 420px; } }
+
+/* Retreat day */
+.day { list-style: none; padding: 0; margin: 1.2em 0 0; border-left: 2px solid var(--accent-soft); }
+.day li { position: relative; padding: 0 0 1.1em 24px; margin: 0; }
+.day li::before {
+  content: ''; position: absolute; left: -7px; top: 0.45em; width: 12px; height: 12px;
+  border-radius: 50%; background: var(--accent);
+}
+.day b { display: block; color: var(--accent); }
+
+
 /* Article (problem pages) */
 .article h2 { margin-top: 1.8em; }
 .article ul { padding-left: 1.2em; }
@@ -210,3 +226,4 @@ a.card:hover { border-color: var(--accent); }
 .review blockquote { margin: 0 0 14px; color: var(--ink); }
 .review figcaption { font-weight: 600; color: var(--muted); font-size: 0.95rem; }
 .review figcaption::before { content: '— '; }
+.section.alt .review { background: var(--bg); }
