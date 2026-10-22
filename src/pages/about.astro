@@ -1,0 +1,206 @@
+---
+import Base from '../layouts/Base.astro';
+import { site } from '../data/site';
+
+const signs = [
+  {
+    title: 'Pain that won’t go away',
+    text: 'Physical pain that keeps coming back, or an illness the doctors struggle to pin down.',
+  },
+  {
+    title: 'A relationship that ended',
+    text: 'A divorce or separation that took away the life you had planned.',
+  },
+  {
+    title: 'Losing someone',
+    text: 'The death of someone close, and grief that doesn’t fit into your schedule.',
+  },
+  {
+    title: 'The midlife question',
+    text: 'You reached what you set out to reach, and now you’re asking what it was all for.',
+  },
+];
+
+const tools = [
+  {
+    title: 'Coaching',
+    text: 'Sometimes you need to talk a situation through, feel heard and understood, and get a fresh perspective on it.',
+    href: '/coaching/',
+  },
+  {
+    title: 'Breathwork',
+    text: 'Sometimes talking isn’t enough and your body needs to let go of what it has been holding.',
+    href: '/breathwork/',
+  },
+  {
+    title: 'Hypnosis',
+    text: 'Sometimes the most effective thing is to change the programming that keeps the old pattern running.',
+    href: '/hypnosis/',
+  },
+];
+
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: site.name,
+  url: `${site.url}/about/`,
+  image: `${site.url}/images/oliver-portrait.webp`,
+  jobTitle: 'Coach, breathwork facilitator and hypnotist',
+};
+---
+
+<Base
+  title={`About Oliver | ${site.name}`}
+  description={`${site.name} left corporate leadership and seven years of entrepreneurship to guide people through life’s turning points with coaching, breathwork and hypnosis.`}
+  schema={[personSchema]}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <div class="eyebrow">About</div>
+          <h1>Find your footing again after a personal crisis</h1>
+          <p class="lead">
+            A loss, a divorce, pain that won’t go away, a midlife reckoning. When life shakes what you
+            built, pushing through stops working. I’m Oliver, and I guide people through that time with
+            coaching, breathwork and hypnosis.
+          </p>
+          <ul class="ticks">
+            <li>Sleep better and feel calmer in your body</li>
+            <li>See your blind spots and what needs to change</li>
+            <li>Build a way of living that fits who you are now</li>
+          </ul>
+          <div class="btn-row">
+            <a class="btn" href={site.bookingUrl}>Book a free call</a>
+            <a class="btn ghost" href="#story">My story</a>
+          </div>
+        </div>
+        <img
+          class="photo portrait"
+          src="/images/oliver-portrait.webp"
+          alt="Oliver Glozik smiling, in a floral shirt in front of tropical leaves"
+          width="740"
+          height="928"
+          fetchpriority="high"
+        />
+      </div>
+      <div class="stats">
+        {site.stats.map((s) => <div class="stat"><b>{s.value}</b><span>{s.label}</span></div>)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="story">
+    <div class="wrap narrow article">
+      <div class="eyebrow">My story</div>
+      <p class="lead" style="margin-top:0">Hi, I’m Oliver.</p>
+      <h2 style="margin-top:0">From the boardroom to this work</h2>
+      <p>
+        I started my career at one of Germany’s big car makers. From there I moved into a leadership
+        role at another DAX company. Then I left to go my own way and spent seven years as an
+        entrepreneur.
+      </p>
+      <p>
+        On paper it was going well. But I kept coming back to one question: is this what I want to
+        spend my life on? I wanted my work to have a real impact on people’s lives. That question led
+        me to breathwork, hypnosis and coaching, and eventually to doing this full time.
+      </p>
+      <p>
+        Since then I’ve worked with more than {site.stats[0].value.replace('+', '')} people and hosted
+        over {site.stats[1].value.replace('+', '')} retreats at our retreat centre in Colombia. Because
+        I spent so long in the corporate and business world, I know the pressure my clients carry. I’ve
+        lived it.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Who I work with</div>
+      <h2>People who have been performing for a long time</h2>
+      <p class="lead">
+        Most of my clients are between 35 and 55. They’ve been functioning, often very well, for years.
+        Then something happens and the old way stops working.
+      </p>
+      <div class="grid grid-4" style="margin-top:28px">
+        {signs.map((s) => (
+          <div class="card">
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="narrow article" style="margin-top:28px">
+        <p>
+          It often shows up as insomnia, anxiety or depression, and the feeling that you have to
+          change a way of living that worked for a long time. In that transition, you want someone to
+          guide you through it. That’s where I come in.
+        </p>
+        <p>
+          The people I work with take responsibility for their own lives. They don’t want someone to
+          do the work for them. They want someone to show them their blind spots.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <div class="eyebrow">How I work</div>
+      <h2>Three tools, because one is rarely enough</h2>
+      <p class="lead">
+        Coaching, breathwork and hypnosis are all powerful on their own. Each week, I use the one that
+        fits where you are.
+      </p>
+      <div class="grid grid-3" style="margin-top:28px">
+        {tools.map((t) => (
+          <a class="card" href={t.href}>
+            <h3>{t.title}</h3>
+            <p>{t.text}</p>
+            <span class="go">Learn more →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <img
+        class="photo wide"
+        src="/images/oliver-glozik-guided-breathwork-session.webp"
+        alt="Oliver sitting beside a drum on a wooden balcony above green mountains, guiding a group lying on mats through breathwork"
+        width="960"
+        height="735"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Training and background</div>
+        <h2 style="margin-top:0">Where I trained</h2>
+        <ul>
+          <li><b>Breathwork:</b> certified through Loka Yoga School.</li>
+          <li><b>Hypnotherapy:</b> currently completing my official accreditation as a hypnotherapist.</li>
+          <li><b>Research:</b> through our retreat centre in Colombia, we contribute to scientific research on healing.</li>
+          <li><b>TV:</b> I appeared on season 8 of <i>The Surreal Life</i> on MTV.</li>
+        </ul>
+        <p class="muted">
+          I’m not a doctor or a psychotherapist. My work supports your wellbeing alongside, not instead
+          of, medical care.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow">
+      <div class="cta-box">
+        <h2>Let’s talk</h2>
+        <p>
+          Book a free 20-minute call. We’ll talk about where you are and whether working together
+          makes sense.
+        </p>
+        <div class="btn-row"><a class="btn" href={site.bookingUrl}>Book a free call</a></div>
+      </div>
+    </div>
+  </section>
+</Base>

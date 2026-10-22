@@ -171,6 +171,9 @@ a.chip:hover { border-color: var(--accent); color: var(--accent); }
 @media (max-width: 800px) { .hero .photo.portrait { max-width: 420px; } }
 
 /* Retreat day */
+.ticks { list-style: none; padding: 0; margin: 1.2em 0 0; display: grid; gap: 8px; }
+.ticks li { position: relative; padding-left: 28px; font-weight: 500; }
+.ticks li::before { content: '✓'; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
 .day { list-style: none; padding: 0; margin: 1.2em 0 0; border-left: 2px solid var(--accent-soft); }
 .day li { position: relative; padding: 0 0 1.1em 24px; margin: 0; }
 .day li::before {
