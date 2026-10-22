@@ -1,0 +1,31 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import { site } from '../../data/site';
+
+const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+---
+
+<Base
+  title={`Blog | ${site.name}`}
+  description={`Straight answers to the questions people ask ${site.name} about hypnosis and breathwork.`}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="eyebrow">Blog</div>
+      <h1>Questions about hypnosis and breathwork</h1>
+      <p class="lead">The questions people ask me before they book, answered properly.</p>
+      <div class="grid grid-2" style="margin-top:24px">
+        {posts.map((p) => (
+          <a class="card" href={`/blog/${p.id}/`} style="text-decoration:none;color:inherit">
+            <div class="eyebrow">{p.data.topic}</div>
+            <h3>{p.data.title}</h3>
+            <p>{p.data.description}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+</Base>
