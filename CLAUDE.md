@@ -7,7 +7,7 @@ This repo is Oliver Glozik's personal website, **https://oliverglozik.com**. It 
 push to `main`. **Pushing to main updates the live site, so confirm in chat before pushing.**
 
 - GitHub: `OGYsas/oliverglozik.com` (public repo, so never commit secrets or API keys).
-- Build: `npm run build` → `dist/`. Node 20+.
+- Build: `npm run build` → `dist/`. Node 22.23.4+.
 
 ## 2. Not Harmonica
 
