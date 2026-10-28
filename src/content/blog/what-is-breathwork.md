@@ -4,7 +4,7 @@ seoTitle: What Is Breathwork? The Types and How Each One Works
 primaryKeyword: what is breathwork
 description: What is breathwork? Changing how you breathe on purpose to change how you feel. The main types, from 4-7-8 to conscious connected, and who should be careful.
 date: 2026-10-19
-updated: 2026-10-22
+updated: 2026-10-27
 topic: breathwork
 ---
 
@@ -91,7 +91,7 @@ In conscious connected breathwork there is also something less physical happenin
 
 ### The techniques I use myself
 
-**My favourite technique for myself is 4-7-8 breathing**, which was popularised by the American doctor Andrew Weil. You inhale for four seconds, hold for seven and exhale for eight. Inhaling for four is easy. Holding for seven is okay. Then the exhale is eight seconds. Compared to the short inhale there is a long hold and a long exhale, and I like that there is *a level of challenge* in it. By slowing the breath down to that degree, **it calms the nerves and it brings you into the present moment**. For calming down, I think 4-7-8 is great.
+**My favourite technique for myself is 4-7-8 breathing**, which was popularised by the American doctor Andrew Weil. You inhale for four seconds, hold for seven and exhale for eight. Inhaling for four is easy. Holding for seven is okay. Then the exhale is eight seconds. Compared to the short inhale there is a long hold and a long exhale, and I like that there is *a level of challenge* in it. By slowing the breath down to that degree, **it calms the nerves and it brings you into the present moment**. For calming down, I think 4-7-8 is great. I explain it step by step in [what the 4-7-8 breathing technique is](/blog/what-is-4-7-8-breathing/).
 
 **For concentration I use box breathing**: inhale for four, hold for four, exhale for four, hold for four. If a breath hold makes you dizzy, shorten it, and always do these sitting or lying down.
 
