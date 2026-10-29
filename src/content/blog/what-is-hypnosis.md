@@ -146,7 +146,7 @@ If you want to feel what it is like for yourself, have a look at [how a hypnosis
 Most people describe it as deep relaxation with a clear, focused mind. You hear everything, and many people are surprised how aware they stay.
 
 ### Will I lose control under hypnosis?
-No. You can speak, move or open your eyes at any time, and you keep your own judgement the whole time.
+No. You can speak, move or open your eyes at any time, and you keep your own judgement the whole time. I go deeper into this in [will I lose control during hypnosis?](/blog/will-i-lose-control-during-hypnosis/)
 
 ### Is hypnosis the same as hypnotherapy?
 Hypnosis is the state itself. Hypnotherapy is using that state to help with a specific problem.
