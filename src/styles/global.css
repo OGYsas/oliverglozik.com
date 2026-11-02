@@ -274,6 +274,9 @@ a.chip:hover { border-color: var(--coral); color: var(--accent); }
 .infographic { margin: 2em 0; }
 .infographic img { width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
 .infographic figcaption { font-size: 0.9rem; color: var(--muted); margin-top: 8px; }
+.breath-animation { max-width: 440px; margin-inline: auto; }
+.breath-animation svg { display: block; width: 100%; height: auto; border-radius: 14px; border: 1px solid var(--line); }
+.breath-animation figcaption { text-align: center; }
 
 /* Blog: author box */
 .author-box {

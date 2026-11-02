@@ -9,6 +9,75 @@ topic: breathwork
 
 What is the 4-7-8 breathing technique? **4-7-8 breathing is a slow breathing pattern where you inhale through your nose for a count of four, hold your breath for a count of seven and exhale through your mouth for a count of eight.** You repeat that four times, and it takes about a minute. The long hold and the even longer exhale slow your whole system down, and having to count gives your mind something to hold on to, so it stops racing. The American doctor Andrew Weil made it popular, and today it is one of the most taught breathing techniques in the world. **It is one of my personal favourites for calming down and getting present**, and in this post I explain how to do it, why it works, what the research really shows and the mistake almost every beginner makes.
 
+<figure class="infographic breath-animation">
+<svg id="breath478" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 600" role="img" aria-labelledby="t478">
+<title id="t478">4-7-8 breathing guide: inhale through the nose for 4 seconds, hold for 7, exhale through the mouth for 8</title>
+<style>
+#breath478 text { font-family: 'Bricolage Grotesque', Figtree, Arial, sans-serif; font-weight: 700; fill: #072d59; text-anchor: middle; }
+#breath478 .l { font-size: 25px; }
+#breath478 .n { font-size: 25px; font-variant-numeric: tabular-nums; }
+</style>
+<defs><clipPath id="nose478"><path d="M300 190 C325 190 338 212 344 245 C352 290 372 320 388 345 C406 372 402 412 372 424 C354 431 341 426 336 414 C332 434 318 444 300 444 C282 444 268 434 264 414 C259 426 246 431 228 424 C198 412 194 372 212 345 C228 320 248 290 256 245 C262 212 275 190 300 190Z"/></clipPath></defs>
+<rect width="600" height="600" fill="#dbf2fc"/>
+<text x="300" y="40" opacity="0" class="l">Inhale through nose<animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.21053" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="40" opacity="0" class="l">Hold<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.21053;0.57895" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="40" opacity="0" class="l">Exhale through mouth<animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.57895" dur="19s" repeatCount="indefinite"/></text>
+<path d="M300 70 L532 530 L68 530Z" fill="none" stroke="#072d59" stroke-opacity=".38" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M300 190 C325 190 338 212 344 245 C352 290 372 320 388 345 C406 372 402 412 372 424 C354 431 341 426 336 414 C332 434 318 444 300 444 C282 444 268 434 264 414 C259 426 246 431 228 424 C198 412 194 372 212 345 C228 320 248 290 256 245 C262 212 275 190 300 190Z" fill="#ffffff"/>
+<g clip-path="url(#nose478)">
+<rect x="180" y="444" width="240" height="270" fill="#f07a7f">
+<animate attributeName="y" values="444;186;186;444" keyTimes="0;0.21053;0.57895;1" dur="19s" repeatCount="indefinite"/>
+</rect>
+</g>
+<path d="M300 190 C325 190 338 212 344 245 C352 290 372 320 388 345 C406 372 402 412 372 424 C354 431 341 426 336 414 C332 434 318 444 300 444 C282 444 268 434 264 414 C259 426 246 431 228 424 C198 412 194 372 212 345 C228 320 248 290 256 245 C262 212 275 190 300 190Z" fill="none" stroke="#072d59" stroke-width="8" stroke-linejoin="round"/>
+<path d="M336 414 C332 398 346 388 358 396 M264 414 C268 398 254 388 242 396" fill="none" stroke="#072d59" stroke-width="8" stroke-linecap="round"/>
+<g fill="none" stroke="#072d59" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+<g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.21053" dur="19s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 430;0 190;0 190;0 190" keyTimes="0;0.21053;0.57895;1" dur="19s" repeatCount="indefinite"/>
+<g transform="translate(40 0)"><path d="M0 -20 L0 20 M-9 -11 L0 -24 L9 -11"/></g><g transform="translate(560 0)"><path d="M0 -20 L0 20 M-9 -11 L0 -24 L9 -11"/></g>
+</g>
+<g opacity="0"><animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.57895" dur="19s" repeatCount="indefinite"/>
+<animateTransform attributeName="transform" type="translate" values="0 190;0 190;0 190;0 430" keyTimes="0;0.21053;0.57895;1" dur="19s" repeatCount="indefinite"/>
+<g transform="translate(40 0)"><path d="M0 -20 L0 20 M-9 11 L0 24 L9 11"/></g><g transform="translate(560 0)"><path d="M0 -20 L0 20 M-9 11 L0 24 L9 11"/></g>
+</g>
+</g>
+<g>
+<animateTransform attributeName="transform" type="translate" values="68 530;300 70;532 530;68 530" keyTimes="0;0.21053;0.57895;1" dur="19s" repeatCount="indefinite"/>
+<circle r="15" fill="#ffffff" stroke="#072d59" stroke-width="3"/>
+<circle r="9" fill="#e5636a">
+<animate attributeName="fill" calcMode="discrete" values="#e5636a;#072d59;#ffffff" keyTimes="0;0.21053;0.57895" dur="19s" repeatCount="indefinite"/>
+</circle>
+</g>
+<g>
+<text x="300" y="582" opacity="0" class="n">1s<animate attributeName="opacity" calcMode="discrete" values="1;0" keyTimes="0;0.05263" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">2s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.05263;0.10526" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">3s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.10526;0.15789" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">4s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.15789;0.21053" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">1s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.21053;0.26316" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">2s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.26316;0.31579" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">3s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.31579;0.36842" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">4s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.36842;0.42105" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">5s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.42105;0.47368" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">6s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.47368;0.52632" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">7s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.52632;0.57895" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">1s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.57895;0.63158" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">2s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.63158;0.68421" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">3s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.68421;0.73684" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">4s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.73684;0.78947" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">5s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.78947;0.84211" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">6s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.84211;0.89474" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">7s<animate attributeName="opacity" calcMode="discrete" values="0;1;0" keyTimes="0;0.89474;0.94737" dur="19s" repeatCount="indefinite"/></text>
+<text x="300" y="582" opacity="0" class="n">8s<animate attributeName="opacity" calcMode="discrete" values="0;1" keyTimes="0;0.94737" dur="19s" repeatCount="indefinite"/></text>
+</g>
+</svg>
+<figcaption>Breathe along with the nose. One round takes 19 seconds.</figcaption>
+<script>
+if (matchMedia('(prefers-reduced-motion: reduce)').matches) {
+  const s = document.getElementById('breath478'); s.setCurrentTime(6); s.pauseAnimations();
+}
+</script>
+</figure>
+
 ## 4-7-8 breathing at a glance
 
 - **The pattern:** inhale through the nose for 4, hold for 7, exhale through the mouth for 8.
