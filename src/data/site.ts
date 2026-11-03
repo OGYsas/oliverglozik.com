@@ -10,7 +10,7 @@ export const site = {
   stats: [
     { value: '1,000+', label: 'lives transformed' },
     { value: '100+', label: 'retreats hosted' },
-    { value: 'Online', label: 'and in person' },
+    { value: '3,500+', label: 'hours of work with the subconscious mind' },
   ],
 };
 
