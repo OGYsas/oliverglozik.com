@@ -6,6 +6,7 @@ export const site = {
   // TODO: replace with Oliver's city once known. Keep it short ("Lisbon", "Austin, TX").
   city: '',
   email: 'hello@oliverglozik.com',
+  instagram: 'https://www.instagram.com/oliverglzk/',
   bookingUrl: '/contact/',
   stats: [
     { value: '1,000+', label: 'lives transformed' },
