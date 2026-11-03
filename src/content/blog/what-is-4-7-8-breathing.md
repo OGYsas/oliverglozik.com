@@ -150,7 +150,7 @@ I also used it a lot **in the early days of hosting retreats, sharing circles an
 
 **4-7-8 breathing is one of the best quick tools I know for nervousness and anxiety in the moment.** Think of the minutes before an important conversation, a job interview, or even before you send an important voice note and feel that tightness inside. Four rounds of 4-7-8 can bring you back to calm and grounded.
 
-It is less suited to moments when you need to be *switched on*, like right before a sports match where you have to be ready to go. 4-7-8 slows you down. For focus I'd rather use box breathing, which I explain below.
+It is less suited to moments when you need to be *switched on*, like right before a sports match where you have to be ready to go. 4-7-8 slows you down. For focus I'd rather use [box breathing](/blog/what-is-box-breathing/), which I compare below.
 
 The research on 4-7-8 and anxiety is promising but small. In a trial with 90 patients after weight-loss surgery, the group that learned 4-7-8 breathing had **lower anxiety afterwards than both a deep breathing group and a group with routine care** ([Aktaş & İlgin, 2023](https://doi.org/10.1007/s11695-022-06405-1)). 4-7-8 is a tool for the moment, not a treatment for an anxiety disorder. If anxiety is shaping your life, please also talk to a doctor or therapist.
 
