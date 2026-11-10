@@ -183,6 +183,8 @@ So the honest picture is this: **4-7-8 is not a magic ratio.** Its strengths are
 | **Box breathing** | In for 4, hold for 4, out for 4, hold for 4 | Focus and staying calm under pressure | A few minutes |
 | **Slow breathing** | About 6 breaths a minute, for example in for 4, out for 6, no hold | A daily practice for a relaxed nervous system | 5 to 20 minutes |
 
+If you want something even quicker, with no counting at all, try [the physiological sigh breathing technique](/blog/physiological-sigh-breathing-technique/): two inhales through the nose and one long exhale.
+
 If you want to see how these compare with longer forms of breathwork, like conscious connected breathing, read [what breathwork is and the main types](/blog/what-is-breathwork/).
 
 ## The biggest beginner mistake

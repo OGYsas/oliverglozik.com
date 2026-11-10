@@ -81,7 +81,7 @@ In conscious connected breathwork there is also something less physical happenin
 |---|---|---|---|
 | **4-7-8 breathing** | Inhale for 4 seconds, hold for 7, exhale for 8 | Calming down, falling asleep | A few rounds, 1 to 2 minutes |
 | **Box breathing** | Inhale for 4, hold for 4, exhale for 4, hold for 4 | Focus, staying calm under pressure | A few minutes |
-| **Cyclic sighing** | Two inhales through the nose, one long exhale through the mouth | Quick stress relief | About 5 minutes |
+| **[Cyclic sighing](/blog/physiological-sigh-breathing-technique/)** | Two inhales through the nose, one long exhale through the mouth | Quick stress relief | About 5 minutes |
 | **Pranayama** | Yogic techniques like alternate nostril breathing or fast belly pumping | Part of a yoga practice, energy, calm | 5 to 30 minutes |
 | **Wim Hof Method** | Rounds of deep breaths followed by a breath hold, often with cold exposure | Energy, alertness | 15 to 20 minutes |
 | **Conscious connected breathwork** | Continuous breathing with no pause between inhale and exhale | Emotional release | 30 minutes of active breathing, about an hour in total |
@@ -93,7 +93,7 @@ In conscious connected breathwork there is also something less physical happenin
 
 **My favourite technique for myself is 4-7-8 breathing**, which was popularised by the American doctor Andrew Weil. You inhale for four seconds, hold for seven and exhale for eight. Inhaling for four is easy. Holding for seven is okay. Then the exhale is eight seconds. Compared to the short inhale there is a long hold and a long exhale, and I like that there is *a level of challenge* in it. By slowing the breath down to that degree, **it calms the nerves and it brings you into the present moment**. For calming down, I think 4-7-8 is great. I explain it step by step in [what the 4-7-8 breathing technique is](/blog/what-is-4-7-8-breathing/).
 
-**For concentration I use box breathing**: inhale for four, hold for four, exhale for four, hold for four. If a breath hold makes you dizzy, shorten it, and always do these sitting or lying down.
+**For concentration I use [box breathing](/blog/what-is-box-breathing/)**: inhale for four, hold for four, exhale for four, hold for four. If a breath hold makes you dizzy, shorten it, and always do these sitting or lying down.
 
 ## What a guided breathwork session looks like
 
