@@ -1,0 +1,407 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReviewList from '../../components/ReviewList.astro';
+import { site } from '../../data/site';
+
+// Sales page for RELEASE. The copy mirrors the Whop storefront at
+// https://oliver-release.whop.site/, which still handles checkout, payment, refunds and
+// video delivery. Keep the checkout link and price in sync with src/pages/breathwork.astro.
+const release = {
+  checkout: 'https://oliver-release.whop.site/checkout/plan_NiEdD2aalLu7t',
+  price: '$27',
+  priceValue: '27',
+};
+const pageUrl = `${site.url}/breathwork/release/`;
+const heroImage = '/images/release-breathwork-at-home.webp';
+
+const promises = [
+  'One 60-minute guided session',
+  'Do it at home, tonight',
+  'No talking. No sharing. Just you and your breath.',
+];
+
+const steps = [
+  { title: 'Lie down', text: 'Headphones in, somewhere you won’t be disturbed.' },
+  { title: 'Breathe', text: 'Follow my voice through the session.' },
+  { title: 'Let it come', text: 'Whatever surfaces, you let it move through instead of pushing it back down.' },
+  { title: 'Come back', text: 'A slow, quiet landing so you finish grounded, not wired.' },
+];
+
+const after = [
+  'The pressure in my chest finally let up.',
+  'My head stopped running the same loop at 2am.',
+  'The fog cleared and I could think straight again.',
+  'I cried the tears I’d been holding back for years.',
+  'I felt lighter, calmer, and more like myself.',
+];
+
+const included = [
+  {
+    title: 'Before you breathe',
+    text: '3 different videos: what to expect, instructions, and the benefits explained.',
+  },
+  {
+    title: 'The RELEASE session',
+    text: 'A 60-minute guided breathwork journey with music, yours to keep and repeat.',
+  },
+  { title: 'Lifetime access', text: 'Do it again whenever the pressure builds back up.' },
+];
+
+const yunus = {
+  name: 'Yunus Aydemir',
+  text: 'I’ve done breathwork at several high-end retreats, and Oliver’s session was the best by far. His technique goes deeper and is more powerful than anything I’d tried. It was intense, but I came out feeling incredibly clear and light. Whether you’re new to breathwork or experienced, he guides you through it masterfully.',
+};
+
+const reviews = [
+  {
+    name: 'Alexander Webeer',
+    text: 'The breathwork sessions with Oliver are amazing. Incredibly guided in a safe container adding all his knowledge around healing to being an entrepreneur and coach. The process itself is very powerful & transformative with strong shifts in healing body, mind & soul.',
+  },
+  yunus,
+  {
+    name: 'Jasem Ashkanani',
+    text: 'The breathwork exercises were nothing short of powerful. They allowed me to connect with my inner self on a profound level. It was a cathartic experience that left me feeling lighter and more in touch with my true self.',
+  },
+  {
+    name: 'Jenna Ram',
+    text: 'I regularly do the recorded breath work session and it always helps me when I am stuck overthinking.',
+  },
+];
+
+const notFor = [
+  'Have heart disease, high blood pressure or a history of stroke or aneurysm',
+  'Have epilepsy or a history of seizures',
+  'Are pregnant',
+  'Have glaucoma or a detached retina, or have had recent surgery',
+  'Have a history of psychosis, bipolar disorder or other serious psychiatric conditions',
+];
+
+const faqs = [
+  {
+    q: 'I’ve never done breathwork. Is this for me?',
+    a: 'Yes. You don’t need any experience. I guide every breath, and the first video shows you exactly how to set up.',
+  },
+  {
+    q: 'What if nothing happens?',
+    a: 'Most people are surprised by how much comes up. If you do the full session and don’t feel a real shift, the 30-day guarantee has you covered.',
+  },
+  {
+    q: 'What if too much comes up?',
+    a: 'You’re always in control. You can slow your breath or stop at any point, and the session ends with a calm landing so you finish grounded.',
+  },
+  {
+    q: 'Is it safe?',
+    a: 'For most healthy adults, yes. Please read “Who this isn’t for” above, and check with your doctor if you’re unsure.',
+  },
+  {
+    q: 'What do I need?',
+    a: 'Headphones, a place to lie down, and about an hour where nobody will disturb you.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. It’s a breathwork practice, not a replacement for therapy or medical care. Many men use it alongside therapy, or as a first step before they’re ready to talk.',
+  },
+];
+
+const productSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Product',
+  name: 'RELEASE: guided breathwork session',
+  description:
+    'A 60-minute guided breathwork session you do at home to release the pressure you’ve been carrying, with 3 prep videos and lifetime access.',
+  image: `${site.url}${heroImage}`,
+  url: pageUrl,
+  brand: { '@type': 'Person', name: site.name, url: site.url },
+  offers: {
+    '@type': 'Offer',
+    price: release.priceValue,
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: release.checkout,
+    hasMerchantReturnPolicy: {
+      '@type': 'MerchantReturnPolicy',
+      returnPolicyCategory: 'https://schema.org/MerchantReturnFiniteReturnWindow',
+      merchantReturnDays: 30,
+      refundType: 'https://schema.org/FullRefund',
+    },
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Breathwork', item: `${site.url}/breathwork/` },
+    { '@type': 'ListItem', position: 2, name: 'RELEASE', item: pageUrl },
+  ],
+};
+---
+
+<Base
+  title={`RELEASE: Guided Breathwork to Let Out What You’ve Been Numbing | ${site.name}`}
+  description={`RELEASE is a 60-minute guided breathwork session you do at home, tonight. No talking, no sharing. ${release.price} one-time, lifetime access, 30-day guarantee.`}
+  image={heroImage}
+  schema={[productSchema, faqSchema, breadcrumbSchema]}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/breathwork/">Breathwork</a> › RELEASE</nav>
+          <div class="eyebrow">RELEASE</div>
+          <h1>Let out what you’ve been numbing.</h1>
+          <p class="lead">
+            A guided breathwork session that helps you release the pressure you’ve been carrying,
+            without needing to talk to anybody about it.
+          </p>
+          <ul class="ticks">
+            {promises.map((p) => <li>{p}</li>)}
+          </ul>
+          <div class="btn-row">
+            <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+          </div>
+        </div>
+        <img
+          class="photo wide"
+          src={heroImage}
+          srcset={`/images/release-breathwork-at-home-800.webp 800w, ${heroImage} 1536w`}
+          sizes="(max-width: 800px) calc(100vw - 40px), 480px"
+          alt="A quiet room prepared for a breathwork session, with headphones on the pillow"
+          width="1536"
+          height="864"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">You’re not broken. You are a pressure cooker that needs to let it out.</h2>
+      <p>
+        From the outside, you’re fine. You show up, handle what needs handling, and keep things
+        moving.
+      </p>
+      <p>
+        But you learned to push it down, and it never went anywhere. It’s in your chest, your jaw,
+        the loop in your head at 2am, the doom scrolling or drink you reach for so you don’t have to
+        feel it.
+      </p>
+      <p>
+        You can’t talk your way out of something you never had words for. But you can breathe it
+        out.
+      </p>
+      <div class="btn-row">
+        <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+      </div>
+
+      <figure class="pull-quote">
+        <blockquote>
+          “Your overthinking isn’t a thinking problem. Every loop in your head is fueled by an emotion
+          underneath it: anger, grief, fear. Let go of the emotion, and the thoughts lose their grip.”
+        </blockquote>
+        <div class="pull-quote-tail" aria-hidden="true">
+          <span></span>
+          <svg width="28" height="28" viewBox="0 0 28 28"><polyline points="1.5,1.5 1.5,26 26.5,1.5" /></svg>
+          <span></span>
+        </div>
+        <figcaption>
+          <img src="/images/oliver-glozik-breathwork-facilitator-avatar.webp" alt="Oliver Glozik, breathwork facilitator" width="64" height="64" loading="lazy" />
+          <span>
+            <a href="/about/">Oliver Glozik</a>
+            <span>Breathwork facilitator · Featured on MTV · Over 1,000 people guided</span>
+          </span>
+        </figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Your body remembers what your mind pushed away.</h2>
+      <p>
+        RELEASE uses a deeper, connected breath, guided by my voice and music. After a few minutes,
+        the thinking mind steps back. What you’ve been holding starts to move.
+      </p>
+      <p>
+        For some it comes out as tears. For others it’s shaking, anger, laughter, or a deep quiet
+        they haven’t felt in years. There’s no right way for it to look. You just keep breathing, and
+        I guide you through every minute.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="eyebrow">How it works</div>
+      <h2>Four steps, one evening</h2>
+      <div class="grid grid-4" style="margin-top:28px">
+        {steps.map((s, i) => (
+          <div class="card">
+            <div class="num">{String(i + 1).padStart(2, '0')}</div>
+            <h3>{s.title}</h3>
+            <p>{s.text}</p>
+          </div>
+        ))}
+      </div>
+      <div class="btn-row">
+        <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap split">
+      <div class="article">
+        <h2 style="margin-top:0">What individuals tell me after RELEASE</h2>
+        <ul class="ticks">
+          {after.map((a) => <li>{a}</li>)}
+        </ul>
+      </div>
+      <ReviewList reviews={[yunus]} />
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <img
+        class="photo portrait"
+        src="/images/oliver-portrait.webp"
+        alt="Oliver Glozik, breathwork facilitator"
+        width="740"
+        height="928"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Who I am</div>
+        <h2 style="margin-top:0">I’m Oliver Glozik.</h2>
+        <p>
+          For the last five years I’ve guided people through breathwork and deep emotional release.
+          My group breathwork has been featured on MTV and US national television, and I run a
+          retreat center in the mountains of Colombia where people come to let go of what they’ve
+          carried for years.
+        </p>
+        <p>
+          Over 1,000 people have breathed with me. The thing I hear most afterwards: “I had no idea it
+          would be that powerful.”
+        </p>
+        <p>
+          I made RELEASE so you don’t need to fly anywhere or sit in a circle sharing your feelings to
+          get there.
+        </p>
+        <div class="btn-row">
+          <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap">
+      <h2>What’s included</h2>
+      <div class="grid grid-3" style="margin-top:28px">
+        {included.map((item, i) => (
+          <div class="card included">
+            <div class="eyebrow">{String(i + 1).padStart(2, '0')}</div>
+            <h3>{item.title}</h3>
+            <p>{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="reviews">
+    <div class="wrap">
+      <h2>What happened for them</h2>
+      <ReviewList reviews={reviews} />
+    </div>
+  </section>
+
+  <section class="section alt" id="price">
+    <div class="wrap narrow">
+      <div class="price-box">
+        <div class="eyebrow">RELEASE</div>
+        <p class="price"><b>{release.price}</b> one-time</p>
+        <p class="muted">
+          Less than one therapy session’s copay. Yours to keep and come back to whenever you need it.
+        </p>
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a>
+        </div>
+        <p class="guarantee">
+          <strong>The 30-day guarantee:</strong> do the session. If you don’t feel a real shift, email
+          me within 30 days and I’ll refund you. No questions, no hard feelings.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="not-for">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Who this isn’t for</h2>
+      <p>
+        This breathwork is powerful, and it isn’t right for everyone. Please don’t do RELEASE if you:
+      </p>
+      <ul>
+        {notFor.map((n) => <li>{n}</li>)}
+      </ul>
+      <p class="note">
+        If you’re unsure, check with your doctor first. RELEASE is not a replacement for therapy or
+        medical care. If you’re in crisis, please contact your local emergency services.
+      </p>
+    </div>
+  </section>
+
+  <section class="section alt" id="faq">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h2>You’ve carried it long enough.</h2>
+        <p>
+          You don’t have to talk about it. You don’t have to figure it out. You just have to lie down
+          and breathe.
+        </p>
+        <div class="btn-row"><a class="btn" href={release.checkout}>Start RELEASE for {release.price}</a></div>
+        <p style="margin:1em 0 0;font-size:0.95rem">30-day guarantee · Instant access · Do it tonight</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .included .eyebrow { color: var(--coral-dark); font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.2rem; letter-spacing: 0; }
+  .price-box {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 20px;
+    padding: clamp(28px, 5vw, 48px); text-align: center;
+  }
+  .price { margin: 0 0 0.6em; color: var(--muted); font-size: 1.1rem; }
+  .price b {
+    display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(3rem, 8vw, 4.2rem);
+    line-height: 1; color: var(--ink); margin-bottom: 4px;
+  }
+  .guarantee {
+    margin: 1.6em auto 0; max-width: 52ch; font-size: 0.97rem; padding-top: 1.4em;
+    border-top: 1px solid var(--line);
+  }
+  .note { margin-top: 1.5em; }
+</style>

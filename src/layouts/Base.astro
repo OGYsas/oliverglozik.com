@@ -6,10 +6,13 @@ interface Props {
   title: string;
   description: string;
   schema?: object[];
+  /** Optional share image, a site path like '/images/x.webp'. */
+  image?: string;
 }
 
-const { title, description, schema = [] } = Astro.props;
+const { title, description, schema = [], image } = Astro.props;
 const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = image ? new URL(image, site.url).href : undefined;
 
 const localBusiness = {
   '@context': 'https://schema.org',
@@ -38,6 +41,8 @@ const allSchema = [localBusiness, ...schema];
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:site_name" content={site.name} />
+    {ogImage && <meta property="og:image" content={ogImage} />}
+    {ogImage && <meta name="twitter:card" content="summary_large_image" />}
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
