@@ -7,6 +7,7 @@ export const site = {
   city: '',
   email: 'hello@oliverglozik.com',
   instagram: 'https://www.instagram.com/oliverglzk/',
+  youtube: 'https://www.youtube.com/@oliverglzk',
   bookingUrl: '/contact/',
   stats: [
     { value: '1,000+', label: 'lives transformed' },
