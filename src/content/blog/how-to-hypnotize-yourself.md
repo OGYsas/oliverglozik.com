@@ -7,9 +7,13 @@ date: 2026-11-09
 topic: hypnosis
 ---
 
-How do you hypnotize yourself? **Sit comfortably, look up, take three deep sighs and close your eyes. Then take yourself deeper with an image, give yourself vivid suggestions, and count yourself back up.** That's self-hypnosis in one sentence. The steps are simple. What makes it work is practice, a clear picture of what you want, and how much you believe in it. A review of 22 trials found self-hypnosis worked best when people learned it as their own skill and practised it, and least when they only listened to someone else's recording.
+How do you hypnotize yourself? **Sit comfortably, look up, take three deep sighs and close your eyes. Then take yourself deeper with an image, give yourself vivid suggestions, and count yourself back up.** That's self-hypnosis in one sentence.
 
-I use it myself. Once I hypnotized myself for financial abundance, and within a week I made 7,000 USD. The hypnosis didn't bring the money by itself. The key was acting on the impulse I felt afterwards. Instead of following my normal patterns, I used the energy that was freed up in the session to do outreach and offer my products. That's my experience, not a promise. But it shows what self-hypnosis is best at: changing your inner state so you act differently.
+The steps are simple. What makes it work is practice, a clear picture of what you want, and how much you believe in it. A review of 22 trials found self-hypnosis worked best when people learned it as their own skill and practised it, and least when they only listened to someone else's recording.
+
+I use it myself. Once I hypnotized myself for financial abundance, and within a week I made 7,000 USD. The hypnosis didn't bring the money by itself. The key was acting on the impulse I felt afterwards. Instead of following my normal patterns, I used the energy that was freed up in the session to do outreach and offer my products.
+
+That's my experience, not a promise. But it shows what self-hypnosis is best at: changing your inner state so you act differently.
 
 ## Key points: how to hypnotize yourself
 
