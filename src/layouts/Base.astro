@@ -51,6 +51,14 @@ const allSchema = [localBusiness, ...schema];
     />
     {allSchema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
     <script is:inline src="https://analytics.ahrefs.com/analytics.js" data-key="6yyUx3af9VOk44L8PoxUTg" async></script>
+    <!-- Google Analytics 4 (property "Oliver-Glozik", stream oliverglozik.com) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-911NTE3Y2B"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-911NTE3Y2B');
+    </script>
   </head>
   <body>
     <header class="site-header">
