@@ -6,26 +6,143 @@ import { site } from '../../data/site';
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.getTime() - a.data.date.getTime(),
 );
+
+// How many cards each section shows before "Show all".
+const PREVIEW = 3;
+
+const sections = [
+  { key: 'hypnosis', name: 'Hypnosis', page: '/hypnosis/' },
+  { key: 'breathwork', name: 'Breathwork', page: '/breathwork/' },
+].map((s) => ({ ...s, posts: posts.filter((p) => p.data.topic === s.key) }));
+
+const readTime = (body = '') => {
+  const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
+  return Math.max(1, Math.round(words / 230));
+};
+const fmt = (d: Date) =>
+  d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
 
 <Base
   title={`Blog | ${site.name}`}
   description={`Straight answers to the questions people ask ${site.name} about hypnosis and breathwork.`}
 >
-  <section class="section">
+  <section class="section blog-index">
     <div class="wrap">
       <div class="eyebrow">Blog</div>
       <h1>Questions about hypnosis and breathwork</h1>
       <p class="lead">The questions people ask me before they book, answered properly.</p>
-      <div class="grid grid-2" style="margin-top:24px">
-        {posts.map((p) => (
-          <a class="card" href={`/blog/${p.id}/`} style="text-decoration:none;color:inherit">
-            <div class="eyebrow">{p.data.topic}</div>
-            <h3>{p.data.title}</h3>
-            <p>{p.data.description}</p>
-          </a>
+
+      <div class="blog-filters" role="toolbar" aria-label="Filter posts">
+        <button type="button" class="pill is-active" data-filter="all" aria-pressed="true">All</button>
+        {sections.map((s) => (
+          <button type="button" class="pill" data-filter={s.key} aria-pressed="false">{s.name}</button>
         ))}
+        <button type="button" class="pill pill-search" aria-label="Search posts" aria-expanded="false" aria-controls="blog-search">
+          <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        </button>
+        <input id="blog-search" class="blog-search" type="search" placeholder="Search posts" aria-label="Search posts" hidden />
       </div>
+
+      {sections.map((s) => (
+        <section class="blog-cat" data-cat={s.key} aria-labelledby={`cat-${s.key}`}>
+          <div class="blog-cat-head">
+            <h2 id={`cat-${s.key}`}>{s.name}</h2>
+            <span class="blog-count">{s.posts.length}</span>
+          </div>
+          <div class="blog-grid">
+            {s.posts.map((p, i) => (
+              <a
+                class="blog-card"
+                href={`/blog/${p.id}/`}
+                data-search={`${p.data.title} ${p.data.description}`.toLowerCase()}
+                data-extra={i >= PREVIEW ? '' : undefined}
+              >
+                <h3>{p.data.title}</h3>
+                <p>{p.data.description}</p>
+                <div class="blog-meta">
+                  <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
+                  <span aria-hidden="true">·</span>
+                  <span>{readTime(p.body)} min read</span>
+                </div>
+              </a>
+            ))}
+          </div>
+          <p class="blog-empty" hidden>No {s.name.toLowerCase()} posts match your search.</p>
+          <div class="blog-cat-foot">
+            {s.posts.length > PREVIEW && (
+              <button type="button" class="btn ghost blog-more" data-more={s.key}>
+                Show all {s.posts.length} {s.name} posts
+              </button>
+            )}
+            <a class="blog-cat-link" href={s.page}>{s.name} page →</a>
+          </div>
+        </section>
+      ))}
     </div>
   </section>
 </Base>
+
+<script>
+  const root = document.querySelector('.blog-index')!;
+  const pills = root.querySelectorAll<HTMLButtonElement>('.pill[data-filter]');
+  const cats = root.querySelectorAll<HTMLElement>('.blog-cat');
+  const searchBtn = root.querySelector<HTMLButtonElement>('.pill-search')!;
+  const search = root.querySelector<HTMLInputElement>('#blog-search')!;
+  let filter = 'all';
+  const expanded = new Set<string>();
+
+  function render() {
+    const q = search.value.trim().toLowerCase();
+    cats.forEach((cat) => {
+      const key = cat.dataset.cat!;
+      cat.hidden = filter !== 'all' && filter !== key;
+      // A single chosen topic or a search shows every post in the section.
+      const showAll = filter === key || expanded.has(key) || q !== '';
+      let visible = 0;
+      cat.querySelectorAll<HTMLElement>('.blog-card').forEach((card) => {
+        const match = !q || card.dataset.search!.includes(q);
+        const show = match && (showAll || !card.hasAttribute('data-extra'));
+        card.hidden = !show;
+        card.classList.toggle('show', show);
+        if (show) visible++;
+      });
+      cat.querySelector<HTMLElement>('.blog-empty')!.hidden = visible > 0;
+      const more = cat.querySelector<HTMLElement>('.blog-more');
+      if (more) more.hidden = showAll;
+    });
+  }
+
+  pills.forEach((pill) =>
+    pill.addEventListener('click', () => {
+      filter = pill.dataset.filter!;
+      pills.forEach((p) => {
+        const on = p === pill;
+        p.classList.toggle('is-active', on);
+        p.setAttribute('aria-pressed', String(on));
+      });
+      render();
+    }),
+  );
+
+  root.querySelectorAll<HTMLButtonElement>('.blog-more').forEach((btn) =>
+    btn.addEventListener('click', () => {
+      expanded.add(btn.dataset.more!);
+      render();
+    }),
+  );
+
+  searchBtn.addEventListener('click', () => {
+    const open = search.hidden;
+    search.hidden = !open;
+    searchBtn.setAttribute('aria-expanded', String(open));
+    if (open) search.focus();
+    else {
+      search.value = '';
+      render();
+    }
+  });
+  search.addEventListener('input', render);
+
+  render();
+</script>
