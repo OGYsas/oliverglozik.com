@@ -20,9 +20,9 @@ const heroImage = '/images/retreat-maloka.webp';
 const external = event.checkout.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 
 const facts = [
-  { label: 'When', value: 'Saturday, Dec 19', detail: '9:30am to 6:30pm' },
-  { label: 'Where', value: 'Retreat center in Girardota', detail: 'In the mountains, 1h 20 from Medellín' },
-  { label: 'Group', value: `${event.places} places only`, detail: 'Lunch and dinner included' },
+  { label: 'When', value: 'Saturday, Dec 19' },
+  { label: 'Where', value: 'Retreat center in Girardota' },
+  { label: 'Group', value: `${event.places} places only` },
 ];
 
 const day = [
@@ -178,7 +178,6 @@ const faqSchema = {
               <li>
                 <span class="fact-label">{f.label}</span>
                 <span class="fact-value">{f.value}</span>
-                <span class="fact-detail">{f.detail}</span>
               </li>
             ))}
           </ul>
@@ -367,14 +366,13 @@ const faqSchema = {
   .event-hero-photo { height: 100%; min-height: 480px; aspect-ratio: auto; }
   .facts {
     list-style: none; padding: 0; margin: 1.6em 0 0; display: grid;
-    grid-template-columns: 1fr 1.35fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+    grid-template-columns: repeat(3, max-content); border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
   }
-  .facts li { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; margin: 0; }
+  .facts li { display: flex; flex-direction: column; gap: 2px; padding: 14px 20px; margin: 0; }
   .facts li:first-child { padding-left: 0; }
   .facts li + li { border-left: 1px solid var(--line); }
   .fact-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral-dark); }
   .fact-value { font-weight: 600; color: var(--ink); line-height: 1.35; }
-  .fact-detail { font-size: 0.9rem; color: var(--muted); }
   @media (max-width: 800px) {
     .event-hero { grid-template-columns: 1fr; gap: 32px; }
     .event-hero-photo { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
