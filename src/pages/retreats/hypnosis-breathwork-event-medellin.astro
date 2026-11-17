@@ -19,10 +19,10 @@ const pageUrl = `${site.url}/retreats/hypnosis-breathwork-event-medellin/`;
 const heroImage = '/images/retreat-maloka.webp';
 const external = event.checkout.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
 
-const promises = [
-  'Saturday, December 19 · 9:30am to 6:30pm',
-  'A retreat center in the mountains of Girardota, about 1h 20 from Medellín',
-  `${event.places} places only`,
+const facts = [
+  { label: 'When', value: 'Saturday, Dec 19', detail: '9:30am to 6:30pm' },
+  { label: 'Where', value: 'Retreat center in Girardota', detail: 'In the mountains, 1h 20 from Medellín' },
+  { label: 'Group', value: `${event.places} places only`, detail: 'Lunch and dinner included' },
 ];
 
 const day = [
@@ -153,28 +153,18 @@ const faqSchema = {
     acceptedAnswer: { '@type': 'Answer', text: f.a },
   })),
 };
-
-const breadcrumbSchema = {
-  '@context': 'https://schema.org',
-  '@type': 'BreadcrumbList',
-  itemListElement: [
-    { '@type': 'ListItem', position: 1, name: 'Retreats', item: `${site.url}/retreats/` },
-    { '@type': 'ListItem', position: 2, name: 'The End-of-Year Breakthrough', item: pageUrl },
-  ],
-};
 ---
 
 <Base
   title={`Hypnosis & Breathwork Event in Medellín, Dec 19 | ${site.name}`}
   description={`A one-day hypnosis and breathwork event near Medellín on December 19: conscious connected breathwork, sitting with your emotions and group hypnosis. 12 places, ${event.price} early bird.`}
   image={heroImage}
-  schema={[eventSchema, faqSchema, breadcrumbSchema]}
+  schema={[eventSchema, faqSchema]}
 >
   <section class="section">
     <div class="wrap">
-      <div class="hero">
+      <div class="hero event-hero">
         <div>
-          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/retreats/">Retreats</a> › The End-of-Year Breakthrough</nav>
           <h1>
             <span class="eyebrow h1-eyebrow">The End-of-Year Breakthrough: Hypnosis &amp; Breathwork Event in Medellín</span>
             Close the year on your terms
@@ -183,8 +173,14 @@ const breadcrumbSchema = {
             Bring the thing you’ve been carrying all year. Breathe through it, feel it, and break
             the limiting beliefs behind it, so you start 2027 free of them.
           </p>
-          <ul class="ticks">
-            {promises.map((p) => <li>{p}</li>)}
+          <ul class="facts">
+            {facts.map((f) => (
+              <li>
+                <span class="fact-label">{f.label}</span>
+                <span class="fact-value">{f.value}</span>
+                <span class="fact-detail">{f.detail}</span>
+              </li>
+            ))}
           </ul>
           <div class="btn-row">
             <a class="btn" href={event.checkout} {...external}>Book your place for {event.price}</a>
@@ -193,7 +189,7 @@ const breadcrumbSchema = {
           <p class="muted small">Early-bird price until {event.earlyBirdUntil}, then {event.fullPrice}.</p>
         </div>
         <img
-          class="photo wide"
+          class="photo wide event-hero-photo"
           src={heroImage}
           alt="The round group room where the breathwork and hypnosis event takes place, with forested hills outside Medellín"
           width="960"
@@ -364,6 +360,30 @@ const breadcrumbSchema = {
 
 <style>
   .small { font-size: 0.95rem; margin-top: 0.8em; }
+
+  /* Above the fold: larger photo, key facts side by side */
+  .event-hero { grid-template-columns: 1fr 1.1fr; gap: 56px; align-items: stretch; }
+  .event-hero > div { align-self: center; }
+  .event-hero-photo { height: 100%; min-height: 480px; aspect-ratio: auto; }
+  .facts {
+    list-style: none; padding: 0; margin: 1.6em 0 0; display: grid;
+    grid-template-columns: 1fr 1.35fr 1fr; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line);
+  }
+  .facts li { display: flex; flex-direction: column; gap: 2px; padding: 14px 16px; margin: 0; }
+  .facts li:first-child { padding-left: 0; }
+  .facts li + li { border-left: 1px solid var(--line); }
+  .fact-label { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--coral-dark); }
+  .fact-value { font-weight: 600; color: var(--ink); line-height: 1.35; }
+  .fact-detail { font-size: 0.9rem; color: var(--muted); }
+  @media (max-width: 800px) {
+    .event-hero { grid-template-columns: 1fr; gap: 32px; }
+    .event-hero-photo { height: auto; min-height: 0; aspect-ratio: 3 / 2; }
+  }
+  @media (max-width: 600px) {
+    .facts { grid-template-columns: 1fr; }
+    .facts li, .facts li:first-child { padding: 12px 0; }
+    .facts li + li { border-left: 0; border-top: 1px solid var(--line); }
+  }
   .place-photo { display: block; width: 100%; height: auto; margin: 0.4em 0 1.4em; }
   .h1-eyebrow { display: block; margin-bottom: 0.9em; line-height: 1.5; }
   .price-box {
