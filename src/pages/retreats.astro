@@ -109,13 +109,23 @@ const faqSchema = {
         </div>
         <img
           class="photo wide"
-          src="/images/retreat-maloka.jpg"
+          src="/images/retreat-maloka.webp"
           alt="A round group room with a wooden roof, a circle of teal armchairs and wide windows onto forested hills"
-          width="1600"
-          height="1066"
+          width="960"
+          height="640"
           fetchpriority="high"
         />
       </div>
+
+      <a class="event-card" href="/retreats/hypnosis-breathwork-event-medellin/">
+        <span class="event-date"><b>19</b>Dec</span>
+        <span class="event-text">
+          <span class="eyebrow">Next one-day event · 12 places</span>
+          <strong>The End-of-Year Breakthrough: a hypnosis &amp; breathwork event near Medellín</strong>
+          <span class="muted">Can’t get away for 4 or 7 days? Join one full day of breathwork, emotions and hypnosis at the same mountain house.</span>
+        </span>
+        <span class="event-arrow" aria-hidden="true">→</span>
+      </a>
     </div>
   </section>
 
@@ -204,7 +214,7 @@ const faqSchema = {
     <div class="wrap split">
       <img
         class="photo portrait"
-        src="/images/oliver-portrait.jpg"
+        src="/images/oliver-portrait.webp"
         alt="Oliver Glozik, founder of the retreats"
         width="740"
         height="928"
@@ -256,3 +266,27 @@ const faqSchema = {
     </div>
   </section>
 </Base>
+
+<style>
+  .event-card {
+    display: flex; align-items: center; gap: 20px; margin-top: 36px; padding: 18px 22px;
+    border: 1px solid var(--line); border-radius: 16px; background: var(--bg);
+    color: inherit; text-decoration: none; transition: border-color 0.2s;
+  }
+  .event-card:hover { border-color: var(--accent); }
+  .event-date {
+    flex: none; display: flex; flex-direction: column; align-items: center; justify-content: center;
+    width: 64px; height: 64px; border-radius: 12px; background: var(--coral); color: #fff;
+    font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.08em;
+  }
+  .event-date b { font-family: 'Bricolage Grotesque', sans-serif; font-size: 1.6rem; line-height: 1; letter-spacing: 0; }
+  .event-text { display: flex; flex-direction: column; gap: 4px; flex: 1; min-width: 0; }
+  .event-text .eyebrow { margin: 0; }
+  .event-text strong { font-size: 1.1rem; color: var(--ink); }
+  .event-text .muted { font-size: 0.95rem; }
+  .event-arrow { flex: none; font-size: 1.4rem; color: var(--accent); }
+  @media (max-width: 600px) {
+    .event-card { align-items: flex-start; gap: 14px; padding: 16px; }
+    .event-arrow { display: none; }
+  }
+</style>

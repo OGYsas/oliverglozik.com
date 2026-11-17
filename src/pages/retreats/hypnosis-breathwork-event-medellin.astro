@@ -1,0 +1,387 @@
+---
+import Base from '../../layouts/Base.astro';
+import ReviewList from '../../components/ReviewList.astro';
+import { site } from '../../data/site';
+import { reviews as allReviews } from '../../data/reviews';
+
+// One-day retreat, Saturday 19 December 2026, at Oliver's place in Girardota.
+// Checkout is the Whop product "The End-of-Year Breakthrough" (prod_NSMKGTznULXvk), 12 in stock,
+// with pre-checkout questions for filming consent, WhatsApp number and health conditions.
+// TODO: after 5 December, set the Whop plan to $197, switch `price` here and drop the early-bird line.
+const event = {
+  checkout: 'https://whop.com/checkout/plan_9bR2GP8Meqn2r',
+  price: '$147',
+  fullPrice: '$197',
+  earlyBirdUntil: 'December 5',
+  places: 12,
+};
+const pageUrl = `${site.url}/retreats/hypnosis-breathwork-event-medellin/`;
+const heroImage = '/images/retreat-maloka.webp';
+const external = event.checkout.startsWith('http') ? { target: '_blank', rel: 'noopener' } : {};
+
+const promises = [
+  'Saturday, December 19 · 9:30am to 6:30pm',
+  'A retreat center in the mountains of Girardota, about 1h 20 from Medellín',
+  `${event.places} places only`,
+];
+
+const day = [
+  {
+    time: '9:30 · Welcome circle',
+    text: 'Each of us names our biggest struggle right now and what we want most. That becomes your focus for the whole day.',
+  },
+  {
+    time: '10:00 · Conscious connected breathwork',
+    text: 'I explain how it works, then we breathe for 60 minutes, including a slow cool-down.',
+  },
+  {
+    time: '11:30 · Sitting with our emotions',
+    text: 'I explain why the feelings we avoid keep running our lives. Then we actually sit with them for 30 minutes, without fixing or running.',
+  },
+  { time: '12:30 · Lunch', text: 'A fresh, home-cooked meal and time to rest outside.' },
+  {
+    time: '1:30 · Hypnosis',
+    text: 'A group hypnosis to work on the limiting beliefs behind what you named in the morning, followed by 1:1 hypnosis where time allows.',
+  },
+  { time: '4:00 · Closing circle', text: 'What shifted, and what you’re taking into 2027.' },
+  { time: '5:00 · Dinner', text: 'We eat together before heading home.' },
+  { time: '6:30 · Back to the city', text: 'Shared rides back to Medellín.' },
+];
+
+const included = [
+  'Welcome and closing circles',
+  '60 minutes of guided conscious connected breathwork',
+  'Guided time sitting with your emotions',
+  'Group hypnosis, plus 1:1 hypnosis where time allows',
+  'Lunch and dinner',
+  'A small group of 12 people at most',
+];
+
+const graydon = allReviews.find((r) => r.name === 'Graydon Ursel');
+
+const reviews = [
+  ...(graydon ? [graydon] : []),
+  {
+    name: 'Yunus Aydemir',
+    text: 'I’ve done breathwork at several high-end retreats, and Oliver’s session was the best by far. His technique goes deeper and is more powerful than anything I’d tried. It was intense, but I came out feeling incredibly clear and light. Whether you’re new to breathwork or experienced, he guides you through it masterfully.',
+  },
+  {
+    name: 'Jasem Ashkanani',
+    text: 'The breathwork exercises were nothing short of powerful. They allowed me to connect with my inner self on a profound level. It was a cathartic experience that left me feeling lighter and more in touch with my true self.',
+  },
+];
+
+const notFor = [
+  'Are pregnant',
+  'Have heart disease, high blood pressure or a history of stroke or aneurysm',
+  'Have epilepsy or a history of seizures',
+  'Have glaucoma or a detached retina, or have had recent surgery',
+  'Have a history of psychosis, bipolar disorder or other serious psychiatric conditions',
+];
+
+const faqs = [
+  {
+    q: 'I’ve never done breathwork or hypnosis. Can I come?',
+    a: 'Yes. Most people who come are new to at least one of them. I explain everything before we start, and I guide you the whole way through.',
+  },
+  {
+    q: 'Will everyone get a 1:1 hypnosis session?',
+    a: 'Everyone takes part in the group hypnosis. After that I work 1:1 with as many people as time allows, so I can’t promise a private session to everyone.',
+  },
+  {
+    q: 'How do I get to Girardota?',
+    a: 'The house is in La Mata, Girardota, about 1 hour 20 minutes from central Medellín depending on traffic. I help organise the transport, and you pay the driver directly. A car from Medellín is $50 one way and seats up to 4 people, so it’s about $12.50 each when shared. If enough of us are coming, we book a van for $100 one way. I’ll put everyone in touch so you can ride together.',
+  },
+  {
+    q: 'What should I bring?',
+    a: 'Comfortable clothes you can lie down in, a water bottle, and a jumper or blanket for the breathwork. Tell me about any food needs when you book.',
+  },
+  {
+    q: 'Do I have to share in the circles?',
+    a: 'You’re invited to, and it helps you get the most out of the day. You decide how much you say.',
+  },
+  {
+    q: 'Will the day be recorded?',
+    a: 'Yes. The day will be filmed, and the footage will be used for promotional clips on social media. Please only join if you’re comfortable with that.',
+  },
+  {
+    q: 'Is this therapy?',
+    a: 'No. It’s breathwork, emotional practice and hypnosis, not a replacement for therapy or medical care. Many people use it alongside therapy.',
+  },
+];
+
+const eventSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Event',
+  name: 'The End-of-Year Breakthrough: Hypnosis & Breathwork Event in Medellín',
+  description:
+    'A one-day retreat in Girardota near Medellín with conscious connected breathwork, sitting with your emotions and group hypnosis. Max 12 people.',
+  startDate: '2026-12-19T09:30:00-05:00',
+  endDate: '2026-12-19T18:30:00-05:00',
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  image: `${site.url}${heroImage}`,
+  url: pageUrl,
+  maximumAttendeeCapacity: event.places,
+  location: {
+    '@type': 'Place',
+    name: 'Retreat house in La Mata, Girardota',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'La Mata, Girardota',
+      addressRegion: 'Antioquia',
+      addressCountry: 'CO',
+    },
+  },
+  organizer: { '@type': 'Person', name: site.name, url: site.url },
+  performer: { '@type': 'Person', name: site.name },
+  offers: {
+    '@type': 'Offer',
+    price: event.price.replace('$', ''),
+    priceCurrency: 'USD',
+    availability: 'https://schema.org/InStock',
+    url: pageUrl,
+  },
+};
+
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({
+    '@type': 'Question',
+    name: f.q,
+    acceptedAnswer: { '@type': 'Answer', text: f.a },
+  })),
+};
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: [
+    { '@type': 'ListItem', position: 1, name: 'Retreats', item: `${site.url}/retreats/` },
+    { '@type': 'ListItem', position: 2, name: 'The End-of-Year Breakthrough', item: pageUrl },
+  ],
+};
+---
+
+<Base
+  title={`Hypnosis & Breathwork Event in Medellín, Dec 19 | ${site.name}`}
+  description={`A one-day hypnosis and breathwork event near Medellín on December 19: conscious connected breathwork, sitting with your emotions and group hypnosis. 12 places, ${event.price} early bird.`}
+  image={heroImage}
+  schema={[eventSchema, faqSchema, breadcrumbSchema]}
+>
+  <section class="section">
+    <div class="wrap">
+      <div class="hero">
+        <div>
+          <nav class="breadcrumb" aria-label="Breadcrumb"><a href="/retreats/">Retreats</a> › The End-of-Year Breakthrough</nav>
+          <h1>
+            <span class="eyebrow h1-eyebrow">The End-of-Year Breakthrough: Hypnosis &amp; Breathwork Event in Medellín</span>
+            Close the year on your terms
+          </h1>
+          <p class="lead">
+            Bring the thing you’ve been carrying all year. Breathe through it, feel it, and break
+            the limiting beliefs behind it, so you start 2027 free of them.
+          </p>
+          <ul class="ticks">
+            {promises.map((p) => <li>{p}</li>)}
+          </ul>
+          <div class="btn-row">
+            <a class="btn" href={event.checkout} {...external}>Book your place for {event.price}</a>
+            <a class="btn ghost" href="#the-day">See the day</a>
+          </div>
+          <p class="muted small">Early-bird price until {event.earlyBirdUntil}, then {event.fullPrice}.</p>
+        </div>
+        <img
+          class="photo wide"
+          src={heroImage}
+          alt="The round group room where the breathwork and hypnosis event takes place, with forested hills outside Medellín"
+          width="960"
+          height="640"
+          fetchpriority="high"
+        />
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Don’t carry it into next year</h2>
+      <p>
+        Most of us end the year the same way. We’re tired, a little numb, and we make big
+        promises for January while carrying the same weight we carried last year.
+      </p>
+      <p>
+        The struggle you keep coming back to isn’t a lack of willpower. Underneath it there’s an
+        emotion you haven’t let yourself feel, and a belief about yourself that keeps it in place.
+      </p>
+      <p>
+        This day works on both. In the morning you breathe and feel what you’ve been holding. In the
+        afternoon, hypnosis goes after the belief behind it, while your mind is open and your body
+        has already let go. This breathwork and hypnosis event near Medellín brings both
+        together in a single day, in a group small enough for real attention.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="the-day">
+    <div class="wrap split">
+      <div class="article">
+        <div class="eyebrow">Saturday, December 19</div>
+        <h2 style="margin-top:0">What happens at the event</h2>
+        <ul class="day">
+          {day.map((d) => <li><b>{d.time}</b>{d.text}</li>)}
+        </ul>
+      </div>
+      <div class="article">
+        <h2 style="margin-top:0">What’s included</h2>
+        <ul class="ticks">
+          {included.map((i) => <li>{i}</li>)}
+        </ul>
+        <div class="btn-row">
+          <a class="btn" href={event.checkout} {...external}>Book your place for {event.price}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="the-place">
+    <div class="wrap narrow article">
+      <div class="eyebrow">The place</div>
+      <h2 style="margin-top:0">A mountain house outside Medellín</h2>
+      <img
+        class="photo wide place-photo"
+        src="/images/retreat-house-at-night.webp"
+        alt="The retreat house outside Medellín at night, its long wooden deck lit by string lights above a tropical garden"
+        width="960"
+        height="640"
+        loading="lazy"
+      />
+      <p>
+        We spend the day at a private retreat house in La Mata, in the mountains of Girardota, about
+        1 hour 20 minutes from central Medellín. It’s the last house on the road, next to a forest
+        reserve, with a creek and a waterfall in the valley below, a garden of more than a thousand
+        plants, and views over the mountains.
+      </p>
+      <p>
+        We work in the maloka, a round group room of more than 160 square metres with a wooden roof,
+        wide windows onto the hills and acoustics built for music and breathwork. When you lie down to
+        breathe, all you’ll hear is the music, the birds and the forest.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="wrap split">
+      <img
+        class="photo portrait"
+        src="/images/oliver-portrait.webp"
+        alt="Oliver Glozik, breathwork facilitator and hypnotist"
+        width="740"
+        height="928"
+        loading="lazy"
+      />
+      <div class="article">
+        <div class="eyebrow">Who’s guiding you</div>
+        <h2 style="margin-top:0">I’m Oliver Glozik.</h2>
+        <p>
+          I’ve hosted {site.stats[1].value} retreats and guided over 1,000 people through breathwork
+          and hypnosis. My group breathwork has been featured on MTV and US national television.
+        </p>
+        <p>
+          This day brings together the parts of my work that create the biggest shifts, in one
+          day, in the same mountain house where I run my multi-day retreats.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="reviews">
+    <div class="wrap">
+      <h2>What people say about working with Oliver</h2>
+      <ReviewList reviews={reviews} />
+    </div>
+  </section>
+
+  <section class="section" id="price">
+    <div class="wrap narrow">
+      <div class="price-box">
+        <div class="eyebrow">The End-of-Year Breakthrough · December 19</div>
+        <p class="price"><b>{event.price}</b> early bird until {event.earlyBirdUntil}</p>
+        <p class="muted">
+          {event.fullPrice} after that. Includes the full day, lunch and dinner. {event.places} places.
+        </p>
+        <p class="recording">
+          <strong>Please note:</strong> this day will be recorded, and the footage will be used for
+          promotional clips on social media. Only book if you’re comfortable with that.
+        </p>
+        <div class="btn-row" style="justify-content:center">
+          <a class="btn" href={event.checkout} {...external}>Book your place for {event.price}</a>
+        </div>
+        <p class="transport">
+          <strong>Getting there:</strong> I help organise shared cars or a van from Medellín. You pay
+          the driver directly, about $12.50 to $25 each way when shared.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section alt" id="not-for">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Who this isn’t for</h2>
+      <p>Conscious connected breathwork is powerful, and it isn’t right for everyone. Please don’t come if you:</p>
+      <ul>
+        {notFor.map((n) => <li>{n}</li>)}
+      </ul>
+      <p class="note">
+        If you’re unsure, message me before you book and check with your doctor. This day is not a
+        replacement for therapy or medical care.
+      </p>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="wrap narrow article">
+      <h2 style="margin-top:0">Questions</h2>
+      <div class="faq">
+        {faqs.map((f) => (
+          <details>
+            <summary>{f.q}</summary>
+            <p>{f.a}</p>
+          </details>
+        ))}
+      </div>
+
+      <div class="cta-box">
+        <h2>Start 2027 lighter.</h2>
+        <p>One day, 12 people, and the thing you’ve been carrying all year.</p>
+        <div class="btn-row"><a class="btn" href={event.checkout} {...external}>Book your place for {event.price}</a></div>
+        <p style="margin:1em 0 0;font-size:0.95rem">Saturday, December 19 · Girardota · {event.places} places</p>
+      </div>
+    </div>
+  </section>
+</Base>
+
+<style>
+  .small { font-size: 0.95rem; margin-top: 0.8em; }
+  .place-photo { display: block; width: 100%; height: auto; margin: 0.4em 0 1.4em; }
+  .h1-eyebrow { display: block; margin-bottom: 0.9em; line-height: 1.5; }
+  .price-box {
+    background: var(--bg); border: 1px solid var(--line); border-radius: 20px;
+    padding: clamp(28px, 5vw, 48px); text-align: center;
+  }
+  .price { margin: 0 0 0.6em; color: var(--muted); font-size: 1.1rem; }
+  .price b {
+    display: block; font-family: 'Bricolage Grotesque', sans-serif; font-size: clamp(3rem, 8vw, 4.2rem);
+    line-height: 1; color: var(--ink); margin-bottom: 4px;
+  }
+  .transport {
+    margin: 1.6em auto 0; max-width: 52ch; font-size: 0.97rem; padding-top: 1.4em;
+    border-top: 1px solid var(--line);
+  }
+  .note { margin-top: 1.5em; }
+  .recording {
+    margin: 0 auto 0.4em; max-width: 52ch; font-size: 0.97rem; padding: 12px 16px;
+    border: 1px solid var(--line); border-radius: 12px; background: var(--bg-alt, transparent);
+  }
+</style>
