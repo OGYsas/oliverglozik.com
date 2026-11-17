@@ -19,6 +19,14 @@ const readTime = (body = '') => {
   const words = body.replace(/<[^>]+>/g, ' ').split(/\s+/).filter(Boolean).length;
   return Math.max(1, Math.round(words / 230));
 };
+// Card cover: the post's breathing animation if it has one, else its first infographic.
+const cover = (body = '') => {
+  const svg = body.match(/<svg id="breath[\s\S]*?<\/svg>/);
+  if (svg) return { svg: svg[0] };
+  const img = body.match(/<img src="(\/images\/[^"]*(?:infographic|diagram)[^"]*)"/);
+  if (img) return { img: img[1].replace(/\.webp$/, '-800.webp') };
+  return null;
+};
 const fmt = (d: Date) =>
   d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric', timeZone: 'UTC' });
 ---
@@ -58,12 +66,20 @@ const fmt = (d: Date) =>
                 data-search={`${p.data.title} ${p.data.description}`.toLowerCase()}
                 data-extra={i >= PREVIEW ? '' : undefined}
               >
+                {(() => {
+                  const c = cover(p.body);
+                  if (c?.svg) return <div class="blog-cover is-anim" aria-hidden="true" set:html={c.svg} />;
+                  if (c?.img) return <div class="blog-cover"><img src={c.img} alt="" width="800" height="450" loading="lazy" decoding="async" /></div>;
+                  return <div class="blog-cover is-empty" aria-hidden="true"><span>{s.name}</span></div>;
+                })()}
+                <div class="blog-card-body">
                 <h3>{p.data.title}</h3>
                 <p>{p.data.description}</p>
                 <div class="blog-meta">
                   <time datetime={p.data.date.toISOString().slice(0, 10)}>{fmt(p.data.date)}</time>
                   <span aria-hidden="true">·</span>
                   <span>{readTime(p.body)} min read</span>
+                </div>
                 </div>
               </a>
             ))}
