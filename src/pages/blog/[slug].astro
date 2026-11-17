@@ -9,7 +9,9 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await render(post);
+const { Content, headings } = await render(post);
+// Table of contents: every H2 except the reference list.
+const toc = headings.filter((h) => h.depth === 2 && !/^(references|sources)$/i.test(h.text));
 const { title, seoTitle, description, date, updated, topic } = post.data;
 
 const service = topic === 'hypnosis'
@@ -33,15 +35,49 @@ const articleSchema = {
 
 <Base title={seoTitle ?? `${title} | ${site.name}`} description={description} schema={[articleSchema]}>
   <section class="section">
-    <div class="wrap narrow article">
-      <div class="eyebrow"><a href="/blog/">Blog</a> · {topic}</div>
-      <h1>{title}</h1>
-      <p class="muted">
-        By {site.name} · <time datetime={date.toISOString()}>{fmt(date)}</time>
-        {updated && <> · updated <time datetime={updated.toISOString()}>{fmt(updated)}</time></>}
-      </p>
+    <div class="wrap post-layout">
+      <header class="post-head article">
+        <div class="eyebrow"><a href="/blog/">Blog</a> · {topic}</div>
+        <h1>{title}</h1>
+        <p class="muted">
+          By {site.name} · <time datetime={date.toISOString()}>{fmt(date)}</time>
+          {updated && <> · updated <time datetime={updated.toISOString()}>{fmt(updated)}</time></>}
+        </p>
+      </header>
 
+      {toc.length > 1 && (
+        <aside class="post-toc">
+          <details class="toc" open>
+            <summary>Table of contents</summary>
+            <nav aria-label="Table of contents">
+              <ol>
+                {toc.map((h) => <li><a href={`#${h.slug}`}>{h.text}</a></li>)}
+              </ol>
+            </nav>
+          </details>
+        </aside>
+      )}
+
+      <div class="post-body article">
       <Content />
+      <script is:inline>
+        // On phones the table of contents sits after the intro (before the first H2);
+        // on wider screens it goes back to the sidebar. Runs inline so it is placed before first paint.
+        (() => {
+          const aside = document.querySelector('.post-toc');
+          const body = document.querySelector('.post-body');
+          const firstH2 = body && body.querySelector(':scope > h2');
+          if (!aside || !firstH2) return;
+          const home = aside.nextElementSibling;
+          const mq = matchMedia('(max-width: 1000px)');
+          const place = () => {
+            if (mq.matches) firstH2.before(aside);
+            else home.before(aside);
+          };
+          place();
+          mq.addEventListener('change', place);
+        })();
+      </script>
 
       <aside class="author-box" aria-label="About the author">
         <img src="/images/oliver-glozik-breathwork-facilitator-avatar.webp" alt="Oliver Glozik" width="88" height="88" loading="lazy" />
@@ -65,6 +101,29 @@ const articleSchema = {
           <a class="btn" href={site.bookingUrl}>Book a free call</a>
         </div>
       </div>
+      </div>
     </div>
   </section>
 </Base>
+
+<script>
+  // Collapse the table of contents on phones, and highlight the section being read.
+  const toc = document.querySelector<HTMLDetailsElement>('.toc');
+  if (toc) {
+    if (matchMedia('(max-width: 1000px)').matches) toc.open = false;
+    const links = [...toc.querySelectorAll<HTMLAnchorElement>('a')];
+    const targets = links
+      .map((a) => document.getElementById(decodeURIComponent(a.hash.slice(1))))
+      .filter((el): el is HTMLElement => !!el);
+    const update = () => {
+      let current = -1;
+      targets.forEach((el, i) => { if (el.getBoundingClientRect().top < 140) current = i; });
+      links.forEach((a, i) => a.classList.toggle('active', i === current));
+    };
+    addEventListener('scroll', update, { passive: true });
+    update();
+    links.forEach((a) => a.addEventListener('click', () => {
+      if (matchMedia('(max-width: 1000px)').matches) toc.open = false;
+    }));
+  }
+</script>
