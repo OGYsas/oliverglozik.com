@@ -13,6 +13,7 @@ export const site = {
     { value: '1,000+', label: 'lives transformed' },
     { value: '100+', label: 'retreats hosted' },
     { value: '3,500+', label: 'hours of work with the subconscious mind' },
+    { value: '2.5M+', label: 'people followed my breathwork online' },
   ],
 };
 
