@@ -3,11 +3,14 @@ import Base from '../layouts/Base.astro';
 import { site, where } from '../data/site';
 import { problems } from '../data/problems';
 
-// TODO: replace `book` with the $247 checkout or booking link once it exists.
+// The hypnosis offer is a package of 3 sessions.
+// TODO: replace `book` with the $750 checkout or booking link once it exists.
 const session = {
-  price: '$247',
+  count: 3,
+  price: '$750',
   book: site.bookingUrl,
 };
+const bookLabel = `Book ${session.count} sessions for ${session.price}`;
 
 const familiar = [
   {
@@ -63,7 +66,7 @@ const faqs = [
   },
   {
     q: 'How long is a session and what does it cost?',
-    a: `A session is ${session.price} and lasts between an hour and an hour and a half, depending on what comes up for you. The price is the same online and in person.`,
+    a: `I work in a package of ${session.count} sessions for ${session.price}. Each session lasts between an hour and an hour and a half, depending on what comes up for you. The price is the same online and in person.`,
   },
   {
     q: 'How do I prepare?',
@@ -88,7 +91,7 @@ const faqSchema = {
 
 <Base
   title={`Hypnosis ${where} | ${site.name}`}
-  description={`Hypnosis ${where.toLowerCase()} with ${site.name}. Rewrite the subconscious script behind the patterns you keep repeating. One-to-one sessions for ${session.price}, 60 to 90 minutes.`}
+  description={`Hypnosis ${where.toLowerCase()} with ${site.name}. Rewrite the subconscious script behind the patterns you keep repeating. ${session.count} one-to-one sessions for ${session.price}, 60 to 90 minutes each.`}
   schema={[faqSchema]}
 >
   <section class="section">
@@ -102,7 +105,7 @@ const faqSchema = {
             us go past the logical mind, find where that program came from and write a new one.
           </p>
           <div class="btn-row">
-            <a class="btn" href={session.book}>Book a session for {session.price}</a>
+            <a class="btn" href={session.book}>{bookLabel}</a>
             <a class="btn ghost" href="#session">How a session works</a>
           </div>
         </div>
@@ -182,17 +185,21 @@ const faqSchema = {
     <div class="wrap split">
       <div class="article">
         <div class="eyebrow">Work with me</div>
-        <h2 style="margin-top:0">A one-to-one hypnosis session</h2>
+        <h2 style="margin-top:0">Three one-to-one hypnosis sessions</h2>
         <p>
-          One session with me is {session.price}. It lasts between an hour and an hour and a half,
-          depending on what comes up for you, and I don’t cut it short because the clock says so.
+          We work together over {session.count} sessions, {session.price} in total. That gives us room to
+          find the root of the pattern, put in the new script and see how it shows up in your daily life.
+        </p>
+        <p>
+          Each session lasts between an hour and an hour and a half, depending on what comes up for
+          you, and I don’t cut it short because the clock says so.
         </p>
         <p>
           Before we meet you fill in a short form, so I already know what you want to change and we
           can go straight to work.
         </p>
         <div class="btn-row">
-          <a class="btn" href={session.book}>Book a session for {session.price}</a>
+          <a class="btn" href={session.book}>{bookLabel}</a>
         </div>
       </div>
       <div>
@@ -277,8 +284,8 @@ const faqSchema = {
 
       <div class="cta-box">
         <h2>Ready to write a new script?</h2>
-        <p>One session, an hour to an hour and a half, online or in person.</p>
-        <div class="btn-row"><a class="btn" href={session.book}>Book a session for {session.price}</a></div>
+        <p>Three sessions, each an hour to an hour and a half, online or in person.</p>
+        <div class="btn-row"><a class="btn" href={session.book}>{bookLabel}</a></div>
       </div>
     </div>
   </section>

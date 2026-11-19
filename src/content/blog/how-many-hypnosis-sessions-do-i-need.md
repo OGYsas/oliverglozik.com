@@ -183,7 +183,7 @@ It comes from a 1970 review by Alfred Barrios that compared hypnotherapy with ot
 
 **Hypnosis is safe for most people.** If you have a history of psychosis, schizophrenia, bipolar disorder or epilepsy, please talk to me before you book. Hypnosis is not a replacement for medical or psychological care, and I don't make medical claims about it. If you are in crisis, contact your local emergency services.
 
-If you'd like to start with one session and see what happens, have a look at [how a hypnosis session with me works](/hypnosis/).
+If you'd like to work with me, I offer hypnosis as a package of 3 sessions. Have a look at [how hypnosis with me works](/hypnosis/).
 
 ## Questions about the number of hypnosis sessions
 
