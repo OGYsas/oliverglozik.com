@@ -38,12 +38,15 @@ The volunteers chose to go up, often because they *want* to be part of the show.
 
 The official definition from the American Psychological Association's hypnosis division describes hypnosis as focused attention, less awareness of your surroundings and an *enhanced capacity* to respond to suggestion ([Elkins et al., 2015](https://doi.org/10.1080/00207144.2014.961870)). A capacity, not a duty to obey. You respond to a suggestion because you go along with it.
 
-| What you let go of | What you keep |
-|---|---|
-| Background noise and the to-do list | Awareness of where you are and what I say |
-| The critical voice that judges every idea | Your values and your own judgement |
-| The effort of *trying* | The ability to stop, talk or open your eyes |
-| | Your memory of the session |
+<figure class="infographic">
+  <a href="/images/will-i-lose-control-during-hypnosis-infographic.webp">
+    <picture>
+      <source media="(max-width: 600px)" srcset="/images/will-i-lose-control-during-hypnosis-infographic-mobile.webp" width="1440" height="2304" />
+      <img src="/images/will-i-lose-control-during-hypnosis-infographic.webp" srcset="/images/will-i-lose-control-during-hypnosis-infographic-800.webp 800w, /images/will-i-lose-control-during-hypnosis-infographic.webp 1600w" sizes="(max-width: 760px) 100vw, 720px" alt="Will I lose control during hypnosis? No. You let go of the busy, critical part of your mind: background noise and the to-do list, the critical voice that judges every idea, and the effort of trying. You keep your awareness and your will: awareness of where you are and what I say, your values and your own judgement, the choice to stop, talk or open your eyes, and your memory of the session. Nobody can make you act against your will, and you can't get stuck. If the session stopped, you would simply come out of it." width="1600" height="900" loading="lazy" decoding="async" />
+    </picture>
+  </a>
+  <figcaption>What you let go of in hypnosis, and what you keep. Tap to enlarge.</figcaption>
+</figure>
 
 **For hypnosis to work, I need you as an active partner.** For example, when I say, *"Now you're walking down a spiral staircase"*, the more you actually picture that staircase, the more powerful the hypnosis becomes. It's a back and forth. It's not *"Now you go to sleep"*, pop, and then the hypnotist is in total control and does whatever they want. Maybe there are master hypnotists who work with very little participation from the person. I'm not that type of hypnotist.
 
