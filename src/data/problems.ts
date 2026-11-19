@@ -45,7 +45,7 @@ export const problems: Problem[] = [
       },
       {
         q: 'Can I do hypnosis for weight loss online?',
-        a: 'Yes. Online sessions work just as well as in-person ones for most people. All you need is a quiet room and headphones.',
+        a: 'Yes. Online sessions work well, though you may need a few more than in person. All you need is a quiet room and headphones.',
       },
       {
         q: 'Will I lose control during hypnosis?',
