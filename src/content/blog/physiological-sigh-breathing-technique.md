@@ -215,7 +215,7 @@ The sigh has **no holds and no counting**, which is why it's so easy to reach fo
 
 **For most people a few gentle sighs are safe. It has no breath holds, which makes it one of the gentlest techniques.** I didn't find safety research specific to it, so this is cautious general advice.
 
-- **If you feel dizzy or tingly,** stop and breathe normally. You're probably breathing too fast or too hard.
+- **If you feel dizzy or tingly,** stop and breathe normally. You're probably breathing too fast or too hard. Here is [why breathing can make your hands tingle](/blog/tetany-breathwork/).
 - **If you are pregnant or have a heart or lung condition, glaucoma or a history of seizures,** check with your doctor before doing five-minute sessions. People with these conditions were left out of the Stanford trial, so it wasn't tested on them.
 - **Don't do long sessions while driving or in water.**
 

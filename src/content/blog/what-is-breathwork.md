@@ -60,7 +60,7 @@ One leading idea is that a long, slow exhale stimulates the vagus nerve, the mai
 
 ### Fast breathing: activation and release
 
-**Fast, deep breathing does the opposite and activates the body.** When you breathe faster and deeper than your body needs, you breathe out more carbon dioxide than it produces. Your blood becomes slightly more alkaline, which doctors call *respiratory alkalosis*. That is what causes the typical sensations of active breathwork: **tingling in the hands and face, light-headedness, changes in temperature and sometimes cramping in the hands** ([MSD Manual](https://www.msdmanuals.com/professional/endocrine-and-metabolic-disorders/acid-base-regulation-and-disorders/respiratory-alkalosis)). In breathwork circles the cramped hands are called *"lobster claws"*. They are uncomfortable but **they pass once you go back to normal breathing**.
+**Fast, deep breathing does the opposite and activates the body.** When you breathe faster and deeper than your body needs, you breathe out more carbon dioxide than it produces. Your blood becomes slightly more alkaline, which doctors call *respiratory alkalosis*. That is what causes the typical sensations of active breathwork: **tingling in the hands and face, light-headedness, changes in temperature and sometimes cramping in the hands** ([MSD Manual](https://www.msdmanuals.com/professional/endocrine-and-metabolic-disorders/acid-base-regulation-and-disorders/respiratory-alkalosis)). In breathwork circles the cramped hands are called *"lobster claws"*. They are uncomfortable but **they pass once you go back to normal breathing**. I explain it in more detail in [tetany in breathwork](/blog/tetany-breathwork/).
 
 This activation is measurable. In a Dutch study, 12 men trained in a Wim Hof-style programme of fast breathing, breath holds, cold exposure and meditation released more adrenaline during the practice than an untrained group ([Kox et al., 2014](https://doi.org/10.1073/pnas.1322174111)). It was a small study with only men, so it shows that the effect is real, not how far it goes.
 
@@ -177,7 +177,7 @@ Slow techniques feel **calming and grounding**. Active breathwork can bring ting
 **Pranayama is the yogic form of breathwork.** Breathwork is the wider term that also includes modern methods like conscious connected breathing and the Wim Hof Method.
 
 ### Why do my hands tingle during breathwork?
-Breathing fast and deep **lowers the carbon dioxide in your blood**, which makes nerves and muscles more excitable. It passes when you return to normal breathing.
+Breathing fast and deep **lowers the carbon dioxide in your blood**, which makes nerves and muscles more excitable. It passes when you return to normal breathing. More in [why your hands tingle and cramp during breathwork](/blog/tetany-breathwork/).
 
 ### How long is a breathwork session?
 A simple technique takes **one to five minutes**. My conscious connected sessions are **about an hour**, with 30 minutes of active breathing.
