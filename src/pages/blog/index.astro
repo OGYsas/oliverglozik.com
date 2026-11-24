@@ -11,8 +11,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
 const PREVIEW = 3;
 
 const sections = [
-  { key: 'hypnosis', name: 'Hypnosis', page: '/hypnosis/' },
-  { key: 'breathwork', name: 'Breathwork', page: '/breathwork/' },
+  { key: 'hypnosis', name: 'Hypnosis', page: '/hypnosis/', day: 'Thursday' },
+  { key: 'breathwork', name: 'Breathwork', page: '/breathwork/', day: 'Tuesday' },
 ].map((s) => ({ ...s, posts: posts.filter((p) => p.data.topic === s.key) }));
 
 const readTime = (body = '') => {
@@ -40,6 +40,11 @@ const fmt = (d: Date) =>
       <div class="eyebrow">Blog</div>
       <h1>Questions about hypnosis and breathwork</h1>
       <p class="lead">The questions people ask me before they book, answered properly.</p>
+      <p class="blog-schedule">
+        <span class="blog-schedule-label">New posts every week</span>
+        <span class="blog-day"><strong>Tuesday</strong> Breathwork</span>
+        <span class="blog-day"><strong>Thursday</strong> Hypnosis</span>
+      </p>
 
       <div class="blog-filters" role="toolbar" aria-label="Filter posts">
         <button type="button" class="pill is-active" data-filter="all" aria-pressed="true">All</button>
@@ -57,6 +62,7 @@ const fmt = (d: Date) =>
           <div class="blog-cat-head">
             <h2 id={`cat-${s.key}`}>{s.name}</h2>
             <span class="blog-count">{s.posts.length}</span>
+            <span class="blog-cat-day">New every {s.day}</span>
           </div>
           <div class="blog-grid">
             {s.posts.map((p, i) => (

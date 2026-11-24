@@ -339,6 +339,11 @@ a.chip:hover { border-color: var(--coral); color: var(--accent); }
   background: var(--paper); border: 1px solid var(--line); border-radius: 999px; padding: 11px 18px;
 }
 .blog-search:focus { outline: 2px solid var(--coral); outline-offset: 1px; }
+.blog-schedule { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin: 6px 0 28px; }
+.blog-schedule-label { font-weight: 600; color: var(--ink); margin-right: 4px; }
+.blog-day { display: inline-flex; gap: 6px; align-items: center; background: var(--paper); border-left: 3px solid var(--coral); border-radius: 8px; padding: 6px 12px; font-size: 0.95rem; color: var(--muted); }
+.blog-day strong { color: var(--ink); }
+.blog-cat-day { margin-left: auto; font-size: 0.9rem; font-weight: 600; color: var(--coral-dark); }
 .blog-cat { margin-top: 48px; }
 .blog-cat[hidden] { display: none; }
 .blog-cat-head { display: flex; align-items: center; gap: 12px; padding-bottom: 14px; margin-bottom: 24px; border-bottom: 2px solid var(--line); }
